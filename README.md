@@ -25,6 +25,11 @@ Women are oppressed. They don't speak openly about their personal problems.There
 
  Many women have bravely overcome their problems. 
 
+<p align="center">
+  <img width="200" height="200" src="https://www.icharts.net/wp-content/uploads/2019/09/Women-Empowerment-750x400.jpg">
+</p> 
+
+
 ## What Speakup_Women stands for :
 
 Speak up is a space for **women to support women**. This is a **dedicated platform for women centric growth, development and opportunities**. Women can speak about **mental, physical and financial issues**.
@@ -37,7 +42,7 @@ Financial : Women face discriminatio while applying to job posts. Here women can
 
 ## How we built it
 
-We have used react.
+We have used react and node.
 
 
 ## What's next for Speak-Up women
