@@ -1,4 +1,5 @@
 const express=require('express');
+const { error } = require('jquery');
 const mongoose=require('mongoose');
 const beforelogin = require('../beforelogin');
 
@@ -43,7 +44,7 @@ router.get("/allPosts",beforelogin,(req,res)=>
                 res.status(200).json({message:"Posts fetched",posts:result});
         }).catch(err=>
             {
-                return res.status(404).json({message:"Posts not found!"})
+                return res.status(404).json({error:err})
             })
 })
 

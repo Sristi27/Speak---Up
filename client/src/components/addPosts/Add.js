@@ -58,12 +58,12 @@ const Add = () => {
                 </Link>
                 <div>
                   <ul className="navbar-nav" style={{display:'flex',flexDirection:'row',
-                  alignItems:'center',justifyContent:'space-evenly',marginTop:'5px'}}>
+                  alignItems:'center',justifyContent:'space-around',marginTop:'5px'}}>
                     <li className="nav-item">
-                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px'}}>Add</Link>
+                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Add</Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px'}}>Grid</Link>
+                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Grid</Link>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link" style={{color:'white',fontSize:'18px'}}

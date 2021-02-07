@@ -33,11 +33,7 @@ const PostGrid = () => {
             .then(res=>res.json())
             .then(res=>
               {
-                if(!res.error)
                 setAllPosts(res.posts);
-                else{
-                  alert(res.error)
-                }
               })
             .catch(err=>console.log(err))
     },[]);
@@ -101,12 +97,12 @@ const PostGrid = () => {
 
 
              
-            <div className="col cards-col col-lg-4 col-md-6 mb-4">
+            <div className="col cards-col col-lg-4 col-md-6 col-12">
             <div className="card">
-            <img class="card-img-top"  style={{backgroundSize:"contain"}}
+            <img className="card-img-top"  style={{backgroundSize:"contain"}}
             src="https://image.freepik.com/free-vector/hand-drawn-womens-day-concept_23-2148435898.jpg"
             alt="Card image"/>
-            <div class="card-img-overlay">
+            <div className="card-img-overlay">
              <div className="body"  style={{padding:'10px 20px',fontWeight:'bolder'}}>
              <h6 className="text-secondary" style={{float:'right'}}>Anonymous</h6>
                           <h3 className="card-title">{post.title}</h3>
@@ -143,10 +139,10 @@ const PostGrid = () => {
                   <ul className="navbar-nav" style={{display:'flex',flexDirection:'row',
                   alignItems:'center',justifyContent:'space-evenly',marginTop:'5px'}}>
                     <li className="nav-item">
-                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px'}}>Add</Link>
+                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Add</Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px'}}>Grid</Link>
+                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Grid</Link>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link" style={{color:'white',fontSize:'18px'}}
@@ -161,7 +157,7 @@ const PostGrid = () => {
               </nav>
      
       
-                <div class="container homegrid">
+                <div className="container homegrid">
             <div className="row">
                 {allposts!='' && allposts.map((post)=>
                 {

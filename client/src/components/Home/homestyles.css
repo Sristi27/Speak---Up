@@ -9,7 +9,7 @@
     overflow: hidden;
   }
   
-  .background {
+ .background {
     background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
     background-size: 400% 400%;
     animation: Gradient 15s ease infinite;
@@ -27,7 +27,7 @@
   } */
 
   
-  header{
+  .home header{
     position: absolute;
     top:0%;
     left: 0%;
@@ -112,20 +112,14 @@
   }
 
   .home .header-content img {
-    height:400px;
-     width:500px;
-  };
+    height:300px;
+     width:350px;
+  }
 
   @media screen and (max-width:768px)
   {
-     .home .header-content
-     {
-          flex-direction: column;
-     }
-
-     .home .header-content img {
-      margin:0 auto;
-      height:200px;
-      width:200px;
-     };
+    .home .header-content img {
+       height:0;
+       width:0;
+    };
   }
