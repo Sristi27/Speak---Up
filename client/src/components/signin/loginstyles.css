@@ -10,10 +10,11 @@
     font-weight: 300;
     src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdr.ttf) format('truetype');
   }
-  * {
+  .login-container {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    overflow: hidden;
     font-weight: 300;
   }
   .login-container {
@@ -228,4 +229,17 @@
     100% {
       transform: translateY(-700px) rotate(600deg);
     }
+  }
+
+
+  .createnew
+  {
+    color:white;
+    cursor: pointer;
+
+  }
+
+  .createnew:hover
+  {
+    text-decoration: underline;
   }

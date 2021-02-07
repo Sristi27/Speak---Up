@@ -4,10 +4,7 @@ import $ from 'jquery'
 import { useHistory } from 'react-router'
 
 import {UserContext} from '../../App'
-
-
-
-
+import { Link } from 'react-router-dom'
 
 const Signin = () => {
 
@@ -61,14 +58,31 @@ const Signin = () => {
         <div className="login-container">
             <div className="wrapper">
             <div className="container">
-            <h1>Welcome</h1>
+            <h1 style={{fontWeight:'bolder'}}>Welcome to Speak Up!</h1>
+            <br/><br/>
+
+
+            {/* <Link to="/signup"> */}
+                    {/* <button className="btn btn-primary"
+                    onClick={()=>console.log('clicked')}
+                    color="primary">Signup</button> */}
+               {/* </Link> */}
+
+            <h4>Login below!</h4>
                 
                 <form className="form">
                 <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
                 <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                 <button type="submit" id="login-button" onClick={(e)=>submitLogin(e)}>Login</button>
                 </form>
+
+                <br>
+                </br>
+                
             </div>
+
+
+
             
             <ul className="bg-bubbles">
                 <li></li>
