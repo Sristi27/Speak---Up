@@ -2,7 +2,7 @@
 Hackathon Project for BW Hacks - Speak up Women!
 
  <p align="center">
-  <img width="260" height="260" src="https://github.com/Sristi27/Black-Wing-Hacks/blob/main/logospeakup.png">
+  <img width="260" height="260" src="https://miro.medium.com/max/3840/1*gYptxAgBRVHvobYE8WBxJQ.png">
 </p>   
  
 
