@@ -1,0 +1,29 @@
+body{
+    height:100vh;
+    background: #136a8a;  
+    background: -webkit-linear-gradient(to right,  #65d1c8, #136a8a); 
+    background: linear-gradient(to right, #65d1c8, #136a8a);
+    
+} 
+.homegrid 
+{
+    margin-top:4%;
+}
+
+.post-container .container{
+
+    max-width: 100%;
+    padding:10px 20px;
+}
+
+.cards-col .card
+{
+    text-align: left;
+    margin-bottom:4px;
+}
+
+
+
+.homegrid img{
+    opacity: .4;
+}
