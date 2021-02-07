@@ -33,7 +33,11 @@ const PostGrid = () => {
             .then(res=>res.json())
             .then(res=>
               {
+                if(!res.error)
                 setAllPosts(res.posts);
+                else{
+                  alert(res.error)
+                }
               })
             .catch(err=>console.log(err))
     },[]);

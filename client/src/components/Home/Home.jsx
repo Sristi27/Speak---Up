@@ -47,8 +47,7 @@ const Home = () => {
       
                 <section className="header-content">
 
-                <img src="https://assets.change.org/photos/5/bp/pr/HIBppRmSGHJIKsC-800x450-noPad.jpg?1537348802" height="400px" width="500px"
-                    />
+                <img src="https://assets.change.org/photos/5/bp/pr/HIBppRmSGHJIKsC-800x450-noPad.jpg?1537348802"/>
 
 
                    <div className="home-text">
@@ -69,7 +68,7 @@ const Home = () => {
                     
                 </section>
                 
-                <h6 className="footer-text">Made with love by <a href="">Sristi</a> and <a href="">Soumi</a></h6>
+                <h6 className="footer-text">Made with ❤️  by <a href="">Sristi</a> and <a href="">Soumi</a></h6>
        </header> 
       </div>
     )

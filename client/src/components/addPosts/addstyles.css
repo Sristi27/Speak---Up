@@ -29,6 +29,8 @@
     display: flex;
     flex-direction: row;
 }
+
+
 .add-container .text
 {
     width:50%;
@@ -65,4 +67,16 @@
 {
     padding-bottom: 6px;
     border-bottom:6px dotted white;
+}
+
+
+@media screen and (max-width:768px)
+{
+
+
+.add-container .images
+{
+    margin-top:2%;
+    flex-direction:column;
+}
 }

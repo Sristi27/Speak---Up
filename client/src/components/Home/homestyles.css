@@ -110,10 +110,22 @@
     flex-direction:row;
     justify-content:space-around
   }
+
+  .home .header-content img {
+    height:400px;
+     width:500px;
+  };
+
   @media screen and (max-width:768px)
   {
      .home .header-content
      {
           flex-direction: column;
      }
+
+     .home .header-content img {
+      margin:0 auto;
+      height:200px;
+      width:200px;
+     };
   }

@@ -35,8 +35,13 @@ const Add = () => {
         .then(res=>res.json())
         .then(res=>
           {
-            console.log(res);
-            history.push('/grid')
+            if(!res.error)
+            {
+              // console.log(res);
+              history.push('/grid')
+            }
+            else
+            alert(res.error)
           })
         .catch(err=>alert(err))
     }
@@ -44,7 +49,7 @@ const Add = () => {
     return (
       <div className="add-container">
 
-<nav className="navbar navbar-expand-lg navbar-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark">
               <div style={{display:'flex',alignItems:'center'}}>
               <Link to="/">
                 <img src="https://miro.medium.com/max/3840/1*gYptxAgBRVHvobYE8WBxJQ.png" height="50px" width="50px"

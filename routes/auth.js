@@ -78,6 +78,9 @@ router.post("/signin",(req,res)=>
                             const {_id,name,email}=savedUser;
                             return res.json({message:"Signed in successfully",token:token,user:savedUser});
                         }
+                        else{
+                            return res.status(404).json({error:"Authentication Failed"})
+                        }
                     }
                 ).catch(err=>{return res.status(400).json({error:err})})
             }
