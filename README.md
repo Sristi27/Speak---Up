@@ -26,7 +26,7 @@ Women are oppressed. They don't speak openly about their personal problems.There
  Many women have bravely overcome their problems. 
 
 <p align="center">
-  <img width="200" height="200" src="https://www.icharts.net/wp-content/uploads/2019/09/Women-Empowerment-750x400.jpg">
+  <img width="400" height="300" src="https://www.icharts.net/wp-content/uploads/2019/09/Women-Empowerment-750x400.jpg">
 </p> 
 
 
