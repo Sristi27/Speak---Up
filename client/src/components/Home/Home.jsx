@@ -1,53 +1,67 @@
 import React, { useContext } from 'react'
 import { Link,useHistory } from 'react-router-dom'
 import { UserContext } from '../../App'
+import Footer from '../Footer/Footer'
+import Nav from '../nav/Nav'
 import './homestyles.css'
-
-
-
+import violence3 from './../../images/violence3.jpeg'
+import violence4 from './../../images/violence4.jpeg'
+import home from './../../images/home.png'
+import v5 from '../../images/v5.jpeg'
 
 const Home = () => {
 
   const { state, dispatch } = useContext(UserContext);
 
-  const history=useHistory()
-    return (
-            <div className="container-fluid home">
-                <div className="background"></div>
-               
-               <header> 
-               <nav className="navbar navbar-expand-lg navbar-dark">
-              <div style={{display:'flex',alignItems:'center'}}>
-              <Link to="/">
-                <img src="https://miro.medium.com/max/3840/1*gYptxAgBRVHvobYE8WBxJQ.png" height="50px" width="50px"
-                style={{marginTop:'-10px'}}/>
-                <span style={{marginLeft:'10px',fontWeight:'bold',fontSize:'30px'}}  className="navbar-brand">Speak Up</span>
-                </Link>
-                <div>
-                  <ul className="navbar-nav" style={{display:'flex',flexDirection:'row',
-                  alignItems:'center',justifyContent:'space-evenly',marginTop:'5px'}}>
-                    <li className="nav-item">
-                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Add</Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Grid</Link>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" style={{color:'white',fontSize:'18px'}}
-                    onClick={()=>{
-                      localStorage.clear();
-                      dispatch({type:"CLEAR"})
-                      history.push("/signin");
-                   }}>Logout</a></li>
-                  </ul>
-                </div>
-              </div>
-              </nav>
-     
-      
-                <section className="header-content">
+  const history=useHistory();
 
-                <img src="https://assets.change.org/photos/5/bp/pr/HIBppRmSGHJIKsC-800x450-noPad.jpg?1537348802"/>
+
+    return (
+           
+           
+           <div className="container-fluid home">
+            <Nav/>
+
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div className="carousel-item active">
+    <img class="d-block w-100" src={v5} style={{backgroundSize:'cover'}}/>
+    </div>
+
+
+    <div class="carousel-item">
+      <img class="d-block w-100" src={violence3} alt="First slide"/> 
+    </div>
+
+
+    <div class="carousel-item">
+      <img class="d-block w-100" src={violence4} alt="Third slide"/>
+    </div>
+
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+</div>
+               
+               
+               
+               <div className="header-content">
+
+                <img src={home}/>
 
 
                    <div className="home-text">
@@ -66,10 +80,10 @@ const Home = () => {
                     <Link to="/add"><button>Share yours'</button></Link>
                    </div>
                     
-                </section>
-                
-                <h6 className="footer-text">Made with ❤️  by <a href="">Sristi</a> and <a href="">Soumi</a></h6>
-       </header> 
+                </div>
+               <Footer/>
+                {/*  */}
+       
       </div>
     )
 }

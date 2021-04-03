@@ -4,6 +4,7 @@ import $ from 'jquery'
 import { useHistory } from 'react-router'
 
 import {UserContext} from '../../App'
+import { Link } from 'react-router-dom'
 
 
 const Signup = () => {
@@ -25,7 +26,7 @@ const Signup = () => {
         return;
 
         e.preventDefault();
-        fetch("/signup",
+        fetch("http://localhost:5000/signup",
         {
             headers:
             {
@@ -52,30 +53,25 @@ const Signup = () => {
 
     return (
         <div className="signup-container">
-            <div className="wrapper">
             <div className="container">
-            <h1>Welcome</h1>
-                
-                <form className="form">
+            <div className="signupDesign"></div>
+            
+                <div className="signupText">
+                <h1>Welcome to Speak Up!</h1>
+            <form className="form">
                 <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
                 <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
                 <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                 <button type="submit" id="login-button" onClick={(e)=>submitSignup(e)}>Signup</button>
                 </form>
-            </div>
+
+                <p className="redirect">Already have an account?
+                    <Link to="/signin" className="loginLink">Login here..</Link></p>
             
-            <ul className="bg-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+               
+                </div>
+               
+                
             </div>
         </div>
     )

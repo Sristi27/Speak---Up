@@ -6,6 +6,8 @@ import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
+import Nav from '../nav/Nav';
+import Footer from '../Footer/Footer';
 
 const PostGrid = () => {
 
@@ -17,32 +19,34 @@ const PostGrid = () => {
 
 
     const history=useHistory();
-
+    
     useEffect(
-        async()=>{
-            await fetch("/allPosts",
-            {
-              headers:
-              {
-                "Content-Type":"application/json",
-                "Authorization":"Bearer"+localStorage.getItem("jwt")
-              },
-              method:"get"
-              
-            })
-            .then(res=>res.json())
-            .then(res=>
-              {
-                setAllPosts(res.posts);
-              })
-            .catch(err=>console.log(err))
+      async()=>
+      {
+      await fetch("http://localhost:5000/allPosts",
+      {
+        headers:
+        {
+          "Content-Type":"application/json",
+          "Authorization":"Bearer"+localStorage.getItem("jwt")
+        },
+        method:"get"
+        
+      })
+      .then(res=>res.json())
+      .then(res=>
+        {
+          // console.log(res.posts)
+          // console.log(localStorage.getItem('user'))
+          setAllPosts(res.posts);
+        })
+      .catch(err=>console.log(err))
     },[]);
-
 
     const increment = async(id) =>
     {
         
-        await fetch("/like",
+        await fetch("http://localhost:5000/like",
            {
              method:"put",
              headers: 
@@ -60,15 +64,14 @@ const PostGrid = () => {
            }).then(res=>res.json())
            .then(result=>
             {
-                setAllPosts(result.posts)
+              setAllPosts(result.posts)
             }).catch(err=>alert(err))
-        
     }
 
     const decrement = async(id) =>
     {
         
-        await fetch("/unlike",
+        await fetch("http://localhost:5000/unlike",
            {
              method:"put",
              headers: 
@@ -86,90 +89,111 @@ const PostGrid = () => {
            }).then(res=>res.json())
            .then(result=>
             {
-                setAllPosts(result.posts)
+              setAllPosts(result.posts)
             }).catch(err=>alert(err))
         
     }
 
+    const delPost = async(id) =>
+    {
+        await fetch("http://localhost:5000/deletePost",
+        {
+          method:'delete',
+          header:
+          {
+            "Content-Type":"application/json",
+            "Authorization":"Bearer"+localStorage.getItem("jwt")
+      
+          },
+          body:JSON.stringify(
+               {
+                   post_id:id
+               }
+             )
+          
+        }).then(res=>res.json())
+        .then(result=>
+         {
+           alert(result.message);
+           setAllPosts(result.posts);
+         }).catch(err=>alert(err))
+     
+    }
+
     const PostCard = ({post})=>
     {
-        return (
+      const postedBy=post.postedBy;
+      // console.log(postedBy,state._id)
+      return (
+          <div class="card">
+    
+    <div class="card-body">
+      
+    {postedBy==state._id?
+     <h6 className="text-secondary" 
+     style={{float:'right'}}>Posted By You</h6>:
+     <h6
+     className="text-secondary" 
+     style={{float:'right'}}>Anonymous</h6>
+    }
+   
+                       <h3 className="card-title">{post.title}</h3>
+                       <p className="card-text">{post.body}</p>
+                      
+                      {/* delete only if added by that user */}
+                      {/* else like/unlike  */}
+                       {postedBy==state._id?
 
+                       <p className="cardText" 
+                       style={{width:'100%',textAlign:'center'}}>
+                         <button className="btn" style={{width:'40%'}}
+                       onClick={()=>delPost(post._id)}>Delete</button>
+                        </p>:
 
-             
-            <div className="col cards-col col-lg-4 col-md-6 col-12">
-            <div className="card">
-            <img className="card-img-top"  style={{backgroundSize:"contain"}}
-            src="https://image.freepik.com/free-vector/hand-drawn-womens-day-concept_23-2148435898.jpg"
-            alt="Card image"/>
-            <div className="card-img-overlay">
-             <div className="body"  style={{padding:'10px 20px',fontWeight:'bolder'}}>
-             <h6 className="text-secondary" style={{float:'right'}}>Anonymous</h6>
-                          <h3 className="card-title">{post.title}</h3>
-                          <p className="card-text">{post.body}</p>
-                          <div className="footer-card">
-                          <button className="btn" style={{marginRight:'5px',color:'black'}}>
-                          <FontAwesomeIcon icon={faThumbsUp} className="icon" onClick={()=>increment(post._id)}/>
-                          </button>
-                          <button className="btn">
-                          <FontAwesomeIcon icon={faThumbsDown} className="icon" onClick={()=>decrement(post._id)}/>
-                          </button>
-                          <label style={{float:'right'}}>{post.likes} Likes</label>
-                          </div>
-             </div>
-           
-            </div>
-            </div>
-            </div>
-        )
+                       <p className="card-text">
+                       <button className="btn" 
+                       disabled={post.likes.includes(state._id)}
+                       onClick={()=>increment(post._id)}>
+                       <FontAwesomeIcon icon={faThumbsUp} className="icon"/>
+                       </button>
+                       <button className="btn"
+                        onClick={()=>decrement(post._id)}
+                        disabled={post.likes.length==0}>
+                       <FontAwesomeIcon icon={faThumbsDown}  
+                        className="icon" />
+                       </button>
+                        <label style={{float:'right'}}>
+                          {post.likes.length} Likes</label>
+                       </p>
+                       }
+        </div></div>
+               
+          )
     }
 
 
     return (
-
-        <div className="post-container">
-         <nav className="navbar navbar-expand-lg navbar-dark">
-              <div style={{display:'flex',alignItems:'center'}}>
-              <Link to="/">
-                <img src="https://miro.medium.com/max/3840/1*gYptxAgBRVHvobYE8WBxJQ.png" height="50px" width="50px"
-                style={{marginTop:'-10px'}}/>
-                <span style={{marginLeft:'10px',fontWeight:'bold',fontSize:'30px'}}  className="navbar-brand">Speak Up</span>
-                </Link>
-                <div>
-                  <ul className="navbar-nav" style={{display:'flex',flexDirection:'row',
-                  alignItems:'center',justifyContent:'space-evenly',marginTop:'5px'}}>
-                    <li className="nav-item">
-                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Add</Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Grid</Link>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" style={{color:'white',fontSize:'18px'}}
-                    onClick={()=>{
-                      localStorage.clear();
-                      dispatch({type:"CLEAR"})
-                      history.push("/signin");
-                   }}>Logout</a></li>
-                  </ul>
-                </div>
-              </div>
-              </nav>
-     
-      
-                <div className="container homegrid">
-            <div className="row">
+<div className="gridContainer">
+        <Nav/>
+         <div className="homegrid">
+            
+          <div class="card-columns">
                 {allposts!='' && allposts.map((post)=>
                 {
                   return(
                      <PostCard post={post}/>
                   )
                 })}
-                {allposts==''?<h1>Add Posts</h1>:''}
+                {allposts==''?<div className="links">
+                <Link to="/add"><button>Add a Post</button></Link>
+                </div>:''}
             </div>
             </div>
-        </div>
+            <Footer/>
+            </div>
     )
 }
 
 export default PostGrid
+
+

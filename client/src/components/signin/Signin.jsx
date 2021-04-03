@@ -6,6 +6,7 @@ import { useHistory } from 'react-router'
 import {UserContext} from '../../App'
 import { Link } from 'react-router-dom'
 
+
 const Signin = () => {
 
 
@@ -25,7 +26,7 @@ const Signin = () => {
         return;
 
         e.preventDefault();
-        fetch("/signin",
+        fetch("http://localhost:5000/signin",
         {
             headers:
             {
@@ -36,7 +37,7 @@ const Signin = () => {
         }).then(res=>res.json())
         .then(res=>
             {
-                    console.log(res)
+                    // console.log(res)
                     if(!res.error)
                     {
                         localStorage.setItem("jwt",res.token);
@@ -56,48 +57,30 @@ const Signin = () => {
 
     return (
         <div className="login-container">
-            <div className="wrapper">
-            <div className="container">
-            <h1 style={{fontWeight:'bolder'}}>Welcome to Speak Up!</h1>
-            <br/><br/>
-
-
-            {/* <Link to="/signup"> */}
-                    {/* <button className="btn btn-primary"
-                    onClick={()=>console.log('clicked')}
-                    color="primary">Signup</button> */}
-               {/* </Link> */}
-
-            <h4>Login below!</h4>
-                
-                <form className="form">
-                <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
-                <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
-                <button type="submit" id="login-button" onClick={(e)=>submitLogin(e)}>Login</button>
-                </form>
-
-                <br>
-                </br>
-                
-            </div>
-
-
-
             
-            <ul className="bg-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            <div className="container">
+           <div className="loginText">
+           <h1>Welcome back!</h1>
+         
+       {/* <Link to="/add">Add</Link> */}
+           
+           <form className="form">
+           <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
+           <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+           <button type="submit" id="login-button" onClick={(e)=>submitLogin(e)}>Login</button>
+           </form>
+
+           <p className="redirect">New here?<Link to="/signup" className="linkdesign">
+               Create your account now!</Link></p>
+       
+         </div>
+            
+         <div className="loginDesign"></div>
+         
+         
+
             </div>
-        </div>
+            </div>
     )
 }
 

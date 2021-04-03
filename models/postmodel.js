@@ -13,9 +13,10 @@ const postSchema = new mongoose.Schema(
 			required: true
 		},
 		likes:
-		{
-			type:Number
-		},
+		[{
+			type:ObjectId,
+			ref:'User'	
+		}],
 		postedBy:
 		{
 			type:ObjectId,

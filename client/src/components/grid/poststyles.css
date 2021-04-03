@@ -1,29 +1,52 @@
-body{
-    height:100vh;
-    background: #136a8a;  
-    background: -webkit-linear-gradient(to right,  #65d1c8, #136a8a); 
-    background: linear-gradient(to right, #65d1c8, #136a8a);
-    
-} 
+.gridContainer
+{
+    width: 100%;
+    height: max-content;
+    margin-bottom: 100px;
+
+}
 .homegrid 
 {
-    margin-top:4%;
-}
-
-.post-container .container{
-
-    max-width: 100%;
     padding:10px 20px;
+    height: max-content;
 }
-
-.cards-col .card
+.homegrid button{
+    margin-right:5px;
+    color:white;
+    background-color:#BB377D;
+}
+.homegrid .links
 {
-    text-align: left;
-    margin-bottom:14px;
+    width: 100vw;
+    text-align: center;
 }
 
+.homegrid label{
+ background-color:#BB377D;
+ color: white;
+ padding: 5px 10px;
+}
+.links button{
+    margin-top: 70px;
+    color:#BB377D;
+    border:2px solid #BB377D;
+    border-radius: 15px;
+    padding:10px 30px;
+    font-size: 20px;
+    background-color: white;
+    cursor: pointer;
+}
 
+.links button:hover
+{
+    background: linear-gradient(to left,#9b155c,#fa9bce);
+    color:rgb(247, 230, 223)
+}
 
-.homegrid img{
-    opacity: .4;
+.card-columns .card{
+margin-bottom: 10px;
+background:url('https://i.pinimg.com/originals/b2/69/08/b26908ab0a42478b85726e60ed5dd124.jpg') center;
+background-size:cover;
+background-repeat:no-repeat;
+border:2px solid #BB377D
 }

@@ -1,0 +1,16 @@
+div.footer
+{
+    color:white;
+    text-align: center;
+    margin-top: 10%;
+    width: 100%;
+    padding: 10px 0;
+    background-color: rgb(8, 5, 0);
+    /* position: relative; */
+}
+
+div.footer a{
+  color:rgb(170, 247, 250);
+  
+}
+

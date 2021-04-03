@@ -1,0 +1,15 @@
+nav
+{
+    box-shadow: rgba(133, 135, 139, 0.65)
+    0px 0px 0px 2px, rgba(133, 135, 139, 0.65) 0px 4px 6px -1px, rgba(133, 135, 139, 0.65) 0px 1px 0px inset;
+    background-color: white;
+}
+
+nav a{
+    font-size: 20px;
+}
+
+nav li:active
+{
+    color:black
+}

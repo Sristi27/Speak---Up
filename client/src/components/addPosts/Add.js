@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router'
 import './addstyles.css';
 import { UserContext } from '../../App';
-
+import Nav from '../nav/Nav';
+import Footer from '../Footer/Footer';
+import add from './../../images/add.jpeg'
 const Add = () => {
 
 
@@ -21,7 +23,7 @@ const Add = () => {
     {
         e.preventDefault();
         var data=JSON.stringify({title,body});
-        await fetch("/addPost",
+        await fetch("http://localhost:5000/addPost",
         {
           headers:
           {
@@ -48,39 +50,12 @@ const Add = () => {
 
     return (
       <div className="add-container">
-
-      <nav className="navbar navbar-expand-lg navbar-dark">
-              <div style={{display:'flex',alignItems:'center'}}>
-              <Link to="/">
-                <img src="https://miro.medium.com/max/3840/1*gYptxAgBRVHvobYE8WBxJQ.png" height="50px" width="50px"
-                style={{marginTop:'-10px'}}/>
-                <span style={{marginLeft:'10px',fontWeight:'bold',fontSize:'30px'}}  className="navbar-brand">Speak Up</span>
-                </Link>
-                <div>
-                  <ul className="navbar-nav" style={{display:'flex',flexDirection:'row',
-                  alignItems:'center',justifyContent:'space-around',marginTop:'5px'}}>
-                    <li className="nav-item">
-                      <Link to="/add" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Add</Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/grid" className="nav-link" style={{color:'white',fontSize:'18px',marginRight:'5px'}}>Grid</Link>
-                    </li>
-                    <li className="nav-item">
-                    <a className="nav-link" style={{color:'white',fontSize:'18px'}}
-                    onClick={()=>{
-                      localStorage.clear();
-                      dispatch({type:"CLEAR"})
-                      history.push("/signin");
-                   }}>Logout</a></li>
-                  </ul>
-                </div>
-              </div>
-              </nav>
-     
-      
-     <div className="images">
+      <Nav/>
+      <div className="container">
      <div className="text">
-      <h1 className="title"> <span class="h1-title">Share your story with us!</span></h1>
+      <h1 className="title">
+         <span class="h1-title">
+           Share your story with us!</span></h1>
         <div className="form-container">
             <div className="mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label" className="labels">Title</label>
@@ -101,16 +76,17 @@ const Add = () => {
                setBody(e.target.value)
             }}></textarea>
           </div>
-          <button type="button" className="btn btn-outline" id="submit" 
+          <button type="button" className="btn" id="submit" 
           onClick={(e)=>submitForm(e)}
           >
           Submit</button>
         </div>
       </div>
       
-     <img src="https://static.vecteezy.com/system/resources/previews/001/413/580/original/woman-empowerment-awareness-concept-free-vector.jpg" id="women"/>
+     <div className="image"></div>
      </div>
-      </div>
+     <Footer/>
+     </div>
     )
 }
 

@@ -9,6 +9,7 @@ import Signin from './components/signin/Signin';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initialState, reducer } from './reducer';
 import Signup from './components/signup/Signup';
+import Contact from './components/Contact/Contact';
 
 
 export const UserContext=createContext();
@@ -35,10 +36,11 @@ const Routing = () =>
    
     <Switch>
     <Route exact path="/" component={Home}/>
-    <Route exact path="/add" component={Add}/>
-    <Route exact path="/grid" component={PostGrid}/>
-    <Route exact path="/signin" component={Signin}/>
-    <Route exact path="/signup" component={Signup}/>
+    <Route path="/add" component={Add}/>
+    <Route path="/grid" component={PostGrid}/>
+    <Route path="/signup" component={Signup}/>
+    <Route path="/signin" component={Signin}/>
+    <Route path="/contact" component={Contact}/>
   </Switch>
   )
 }

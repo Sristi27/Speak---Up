@@ -1,46 +1,20 @@
 .container-fluid{
-    height: 100%;
-    margin: 0;
     font-family: 'Josefin Sans', sans-serif;
-    box-sizing: border-box;
-    padding: 0;
-    width: 100%;
-    background: #FFF;
+    background-color: white;
     overflow: hidden;
-  }
-  
- .background {
-    background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
-    background-size: 400% 400%;
-    animation: Gradient 15s ease infinite;
-    position: relative;
-    height:100vh;
-    width: 100%;
+    color:#BB377D;
+    height: 100vh;
     padding:0;
-    margin:0px;
   }
 
-  /* .nav
-  {
-    top:0;
-    position: absolute;
-  } */
-
-  
-  .home header{
-    position: absolute;
-    top:0%;
-    left: 0%;
-    width:100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Header content & title & button*/
   .home .header-content{
-    margin-top:5%;
+    margin-top:1%;
+    position: absolute;
     text-align: center;
-    color:  #EFEEF5;
+    justify-content: center;
+    display:flex;
+    width: 100%;
+    align-items: center;
   }
   .home .header-content h1{
     text-transform: uppercase;
@@ -55,71 +29,63 @@
   .home .header-content button{
     width: 140px;
     margin:20px 10px;
-    color: #591BC5;
+    color: #BB377D;
+    font-weight: bold;
     font-size: 17px;
-    border:1px solid #EFEEF5;
-    font-weight: 500;
-    background: #EFEEF5;
-    border-radius: 20px;
+    border:1px solid #BB377D;
+    background: white;
+    border-radius:15px;
     padding: 10px;
     cursor:pointer;
     transition: .3s;
   }
   .home .header-content button:hover{
     border-radius: 0;
-  }
-  /* Animate Background*/
-  @keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  
-  }
-  
-
-  .footer-text
-  {
-    color:white;
-     margin-top:8%;
-     text-align: center;
-  }
-
-  .footer-text a{
+    background-color:  #BB377D;
     color:white;
   }
 
-
+  
   .home-title
   {
     text-align: center;
-    border: 4px dotted white;
+    border: 4px dotted #BB377D;
     padding:16px 30px;
     border-width:3px;
     font-weight: bolder;
   }
 
-  .home .header-content
+
+  .home-text
   {
-    display:flex;
-    flex-direction:row;
-    justify-content:space-around
+    width: 50%;
   }
 
   .home .header-content img {
-    height:300px;
-     width:350px;
+    width:50%;
   }
 
-  @media screen and (max-width:768px)
+
+  a{
+    cursor: pointer;
+  }
+
+  
+  @media screen and (max-width:800px)
   {
+    .home .header-content{
+      margin:10% 0;
+    }
+
+    .home-text
+    {
+      width: 100%;
+      margin-bottom:10%;
+    }
+
     .home .header-content img {
-       height:0;
-       width:0;
+       display: none
     };
+
+
   }

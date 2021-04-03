@@ -8,9 +8,9 @@ const Post = mongoose.model("Post");
 
 router.post("/addPost",beforelogin,(req,res)=>
 {
-    console.log(req.body);
+    // console.log(req.body);
     const {title,body}=req.body;
-    console.log(title,body)
+    // console.log(title,body)
     if(!title || !body)
     {
         return res.status(400).json({message:"Please add all the fields!"});
@@ -20,7 +20,6 @@ router.post("/addPost",beforelogin,(req,res)=>
         {
             title,
             body,
-            likes:0,
             postedBy:req.user
 
         }
@@ -50,11 +49,34 @@ router.get("/allPosts",beforelogin,(req,res)=>
 
 
 
-router.put('/like',async(req,res)=>{
+router.put('/like',beforelogin,async(req,res)=>{
+    
+    // console.log(req.user._id)
+    const post =  await Post.findByIdAndUpdate(req.body.post_id,
+        {
+            $push:{likes:req.user._id}
+        })
+        
+        Post.find().then(result=>
+        {
+            res.status(200).json({message:"Posts fetched",posts:result});
+        }).catch(err=>
+                {
+                    return res.status(404).json({message:"Posts not found!"})
+                })
+
+    // console.log(post.tree.title);
+})
+
+
+
+
+
+router.put('/unlike',beforelogin,async(req,res)=>{
     
     const post =  await Post.findByIdAndUpdate(req.body.post_id,
         {
-            $inc:{likes:1}
+            $pull:{likes:req.user._id}
         })
     
         Post.find().then(result=>
@@ -69,25 +91,19 @@ router.put('/like',async(req,res)=>{
 })
 
 
-
-
-
-router.put('/unlike',async(req,res)=>{
-    
-    const post =  await Post.findByIdAndUpdate(req.body.post_id,
+router.delete('/deletePost',async(req,res)=>
+{
+    // console.log(await Post.findById())
+    await Post.deleteOne(req.body.post_id).then(
+        result=>
         {
-            $inc:{likes:-1}
-        })
-    
-        Post.find().then(result=>
-            {
-                    res.status(200).json({message:"Posts fetched",posts:result});
-            }).catch(err=>
+            Post.find().then(posts=>
                 {
-                    return res.status(404).json({message:"Posts not found!"})
-                })
+                    res.status(200).json({message:"Post deleted successfully!",posts:posts})
+                }).catch(err=>{return res.status(404).json({error:err})})
+        }
+    ).catch(err=>{return res.status(404).json({message:"Unsuccessfull deletion"})})
 
-    // console.log(post.tree.title);
 })
 
 module.exports=router
