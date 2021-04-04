@@ -1,3 +1,4 @@
+![logo](https://user-images.githubusercontent.com/53037053/113508400-6a295680-956d-11eb-96d0-052ef067b2e0.png)
 # Black-Wing-Hacks
 Hackathon Project for BW Hacks - Speak up Women!
 
