@@ -19,11 +19,18 @@ const Add = () => {
 
    const history=useHistory();
 
+   //add a new post
+
     const submitForm = async (e) =>
     {
         e.preventDefault();
+        if(title=='' || body=='')
+        {
+          alert("Fill all the fields!");
+          return;
+        }
         var data=JSON.stringify({title,body});
-        await fetch("http://localhost:5000/addPost",
+        await fetch("/addPost",
         {
           headers:
           {

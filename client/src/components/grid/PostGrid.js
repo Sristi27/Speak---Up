@@ -20,10 +20,11 @@ const PostGrid = () => {
 
     const history=useHistory();
     
+    //fetch all posts
     useEffect(
       async()=>
       {
-      await fetch("http://localhost:5000/allPosts",
+      await fetch("/allPosts",
       {
         headers:
         {
@@ -43,10 +44,11 @@ const PostGrid = () => {
       .catch(err=>console.log(err))
     },[]);
 
+
     const increment = async(id) =>
     {
         
-        await fetch("http://localhost:5000/like",
+        await fetch("/like",
            {
              method:"put",
              headers: 
@@ -71,7 +73,7 @@ const PostGrid = () => {
     const decrement = async(id) =>
     {
         
-        await fetch("http://localhost:5000/unlike",
+        await fetch("/unlike",
            {
              method:"put",
              headers: 
@@ -96,7 +98,7 @@ const PostGrid = () => {
 
     const delPost = async(id) =>
     {
-        await fetch("http://localhost:5000/deletePost",
+        await fetch("/deletePost",
         {
           method:'delete',
           header:
@@ -114,7 +116,7 @@ const PostGrid = () => {
         }).then(res=>res.json())
         .then(result=>
          {
-           alert(result.message);
+          //  alert(result.message);
            setAllPosts(result.posts);
          }).catch(err=>alert(err))
      
@@ -127,15 +129,15 @@ const PostGrid = () => {
       return (
           <div class="card">
     
-    <div class="card-body">
-      
-    {postedBy==state._id?
-     <h6 className="text-secondary" 
-     style={{float:'right'}}>Posted By You</h6>:
-     <h6
-     className="text-secondary" 
-     style={{float:'right'}}>Anonymous</h6>
-    }
+          <div class="card-body">
+            
+          {postedBy==state._id?
+          <h6 className="text-secondary" 
+          style={{float:'right'}}>Posted By You</h6>:
+          <h6
+          className="text-secondary" 
+          style={{float:'right'}}>Anonymous</h6>
+          }
    
                        <h3 className="card-title">{post.title}</h3>
                        <p className="card-text">{post.body}</p>

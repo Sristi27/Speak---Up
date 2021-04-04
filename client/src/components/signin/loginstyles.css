@@ -96,6 +96,8 @@ to   { opacity: 1; }
     padding: 20px 0;
     position: relative;
     z-index: 2;
+    width: 70%;
+    margin:0 auto;
   }
   
   .login-container form input {
@@ -105,7 +107,7 @@ to   { opacity: 1; }
     outline: 0;
     border: 1px solid #BB377D;
     /* background-color: rgba(255, 255, 255, 0.2); */
-    width: 250px;
+    width: 85%;
     border-radius: 3px;
     padding: 10px 15px;
     margin: 0 auto 10px auto;
@@ -149,7 +151,7 @@ to   { opacity: 1; }
     color: #FBD3E9;
     border-radius: 3px;
     font-size:20px;
-    width: 250px;
+    width: 85%;
     cursor: pointer;
     transition-duration: 0.25s;
   }
@@ -193,6 +195,14 @@ to   { opacity: 1; }
 }
   @media screen and (max-width:678px)
   {
+    .login-container .container
+    {
+      max-width: 80vw;
+    }
+    .login-container form
+    {
+      width:90%;
+    }
     .login-container .loginDesign
     {
       display: none;

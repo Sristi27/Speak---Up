@@ -6,7 +6,8 @@ var mongoose=require('mongoose');
 const path=require('path')
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://sristi27:<password>@cluster0.xsqn2.mongodb.net/<posts>?retryWrites=true&w=majority"
+mongoose.connect(process.env.MONGODB_URI || 
+    "mongodb+srv://sristi27:270520@cluster0.xsqn2.mongodb.net/<posts>?retryWrites=true&w=majority"
 ,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
