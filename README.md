@@ -45,7 +45,10 @@ Financial : Women face discriminatio while applying to job posts. Here women can
 
 ## How we built it
 
-We have used react and node.
+Technologies used:
+~ Express for Server Side Code
+~ MongoDB Atlas as database support
+~ React for Client Side Code
 
 
 ## What's next for Speak-Up women
@@ -53,3 +56,9 @@ We have used react and node.
 We aim to make more and more women aware of this platform and encourage them to speak up about the problems that they are facing in their day to day life. We aim to make their voices heard.
 
 ![img](https://github.com/Sristi27/Black-Wing-Hacks/blob/main/empowerwomen1.jpg)
+
+Feel free to star this repo ![image](https://user-images.githubusercontent.com/53037053/113508494-ef147000-956d-11eb-9b2c-eca63d85023b.png)!
+Also,if any of you wish to contribute go ahead and raise an issue!
+
+
+
