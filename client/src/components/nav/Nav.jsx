@@ -3,8 +3,6 @@ import React, { useContext } from 'react'
 import { UserContext } from '../../App'
 import logo from './../../images/logo.png'
 import './navstyles.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-solid-svg-icons'
 
 const Nav = () => {
 

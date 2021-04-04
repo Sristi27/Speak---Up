@@ -21,7 +21,11 @@ const Contact = () => {
                 </span>
             </h2>
             <p className="content-para">
-            In case of any immediate help,reach out to us at <span className="mail">wespeakup@gmail.com</span>
+            In case of any immediate help,reach out to us at
+             <a href="mailto:sristi2705@gmail.com"
+             className="mail">
+                 wespeakup@gmail.com
+            </a>
             <br/>
             <br/>
             Join our community of strong and brave women from all around the world.
@@ -30,10 +34,17 @@ const Contact = () => {
                 Reach out to us at :
                 <br/><br/>
                 <ul>
-                    <li><FontAwesomeIcon icon={faLinkedinIn}/></li>
-                    <li><FontAwesomeIcon icon={faFacebookF} /></li>
-                    <li><FontAwesomeIcon icon={faTwitter} /></li>
-                    <li><FontAwesomeIcon icon={faInstagram} /></li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/sristi-chowdhury-3660941a5/"
+                        target="_blank">
+                            <FontAwesomeIcon icon={faLinkedinIn}/></a></li>
+                    <li><a href="https://github.com/Sristi27" target="_blank"><i class="fa fa-github">
+                        </i></a></li>
+                    <li><a href="https://twitter.com/SRISTICHOWDHUR6" target="_blank">
+                        <FontAwesomeIcon icon={faTwitter} /></a></li>
+                    <li><a href="https://www.linkedin.com/in/sristi-chowdhury-3660941a5/"
+                        target="_blank">
+                        <FontAwesomeIcon icon={faInstagram} /></a></li>
                 </ul>
             </p>
             </p>

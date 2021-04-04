@@ -53,10 +53,22 @@
     font-weight: bolder;
     text-decoration: underline;
     cursor: pointer;
+    color:#BB377D;
     font-size: 25px;
+    margin-left: 5px;
 }
 
-.mail:hover,.contactDiv li:hover
+.social a,.social i
+{
+    color:#BB377D;
+}
+
+.social i{
+    font-size:25px;
+}
+
+.mail:hover,.contactDiv li a:hover,
+.social li a:hover i:hover
 {
     color:rgb(51, 82, 255)
 }
