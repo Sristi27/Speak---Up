@@ -57,7 +57,7 @@ We aim to make more and more women aware of this platform and encourage them to 
 
 ![img](https://github.com/Sristi27/Black-Wing-Hacks/blob/main/empowerwomen1.jpg)
 
-Feel free to star this repo ![image](https://user-images.githubusercontent.com/53037053/113508494-ef147000-956d-11eb-9b2c-eca63d85023b.png)!
+Feel free to star this repo ⭐ !
 Also,if any of you wish to contribute go ahead and raise an issue!
 
 
