@@ -1,6 +1,5 @@
 
-# Black-Wing-Hacks
-Hackathon Project for BW Hacks - Speak up Women!
+# Speak up Women!
 
 ## Check out our app <a href="https://womenspeak.herokuapp.com/"> here </a>  mail : csristi27@gmail.com Password : 123
 
