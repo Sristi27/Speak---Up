@@ -7,7 +7,8 @@ const path=require('path')
 
 
 mongoose.connect(process.env.MONGODB_URI || 
-    "mongodb+srv://sristi27:270520@cluster0.xsqn2.mongodb.net/<posts>?retryWrites=true&w=majority"
+    "mongodb+srv://username:<password>@cluster0.xsqn2.mongodb.net/<posts>?retryWrites=true&w=majority"
+                // Add your own mongo url 
 ,{
     useNewUrlParser:true,
     useUnifiedTopology:true,
