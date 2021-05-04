@@ -59,7 +59,7 @@ We aim to make more and more women aware of this platform and encourage them to 
 Feel free to star this repo ⭐ !
 Also,if any of you wish to contribute go ahead and raise an issue!
 
-![img](https://github.com/Sristi27/Speak---Up/blob/main/empowerwomen1.jpg)
+![img](https://sdgresources.relx.com/sites/default/files/carousel-images/int_womens_day-2.jpg)
 
 
 
