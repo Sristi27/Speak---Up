@@ -1,7 +1,7 @@
 
 # Speak up Women!
 
-## Check out our app <a href="https://womenspeak.herokuapp.com/"> here </a>  mail : csristi27@gmail.com Password : 123
+## Check out our app <a href="https://womenspeak.herokuapp.com/"> here </a>  mail : neha@gmail.com Password : 123
 
  <p align="center">
   <img width="250" height="280" src="https://user-images.githubusercontent.com/53037053/113508400-6a295680-956d-11eb-96d0-052ef067b2e0.png">
@@ -59,7 +59,7 @@ We aim to make more and more women aware of this platform and encourage them to 
 Feel free to star this repo ⭐ !
 Also,if any of you wish to contribute go ahead and raise an issue!
 
-![img](https://github.com/Sristi27/Black-Wing-Hacks/blob/main/empowerwomen1.jpg)
+![img](https://github.com/Sristi27/Speak---Up/blob/main/empowerwomen1.jpg)
 
 
 
