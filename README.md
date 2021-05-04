@@ -1,10 +1,10 @@
-# Black-Wing-Hacks
-Hackathon Project for BW Hacks - Speak up Women!
+
+# Speak up Women!
 
 ## Check out our app <a href="https://womenspeak.herokuapp.com/"> here </a>  mail : csristi27@gmail.com Password : 123
 
  <p align="center">
-  <img width="260" height="260" src="https://miro.medium.com/max/3840/1*gYptxAgBRVHvobYE8WBxJQ.png">
+  <img width="250" height="280" src="https://user-images.githubusercontent.com/53037053/113508400-6a295680-956d-11eb-96d0-052ef067b2e0.png">
 </p>   
  
 
@@ -44,11 +44,23 @@ Financial : Women face discriminatio while applying to job posts. Here women can
 
 ## How we built it
 
-We have used react and node.
+Technologies used:
+~ Express for Server Side Code
+~ MongoDB Atlas as database support
+~ React for Client Side Code
 
 
 ## What's next for Speak-Up women
 
 We aim to make more and more women aware of this platform and encourage them to speak up about the problems that they are facing in their day to day life. We aim to make their voices heard.
 
+## Contribution
+
+Feel free to star this repo ⭐ !
+Also,if any of you wish to contribute go ahead and raise an issue!
+
 ![img](https://github.com/Sristi27/Black-Wing-Hacks/blob/main/empowerwomen1.jpg)
+
+
+
+
