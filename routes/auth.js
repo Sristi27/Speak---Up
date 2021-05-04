@@ -153,16 +153,6 @@ router.post("/signup",(req,res)=>
 
 
 
-router.get("/deleteImage",async(req,res)=>
-{
-   
-   console.log('deleting')
-  
-
-})
-
-
-
 router.post("/signin",(req,res)=>
 {
         const {email,password}=req.body;
