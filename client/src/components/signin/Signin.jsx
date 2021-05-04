@@ -63,7 +63,7 @@ const Signin = () => {
             
             <div className="container">
            <div className="loginText">
-           <h1>Welcome back!</h1>
+           <h1>Welcome back<br></br>To Speak UP!</h1>
          
        {/* <Link to="/add">Add</Link> */}
            
@@ -73,7 +73,8 @@ const Signin = () => {
            <button type="submit" id="login-button" onClick={(e)=>submitLogin(e)}>Login</button>
            </form>
 
-           <p className="redirect">New here?<Link to="/signup" className="linkdesign">
+           <p className="redirect">New here?
+           <Link to="/signup" className="linkdesign">
                Create your account now!</Link></p>
        
          </div>

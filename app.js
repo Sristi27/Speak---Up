@@ -35,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./routes/post'));
 app.use(require('./routes/auth'));
+app.use(require('./routes/capture'));
 
 if(process.env.NODE_ENV=="production")
 {

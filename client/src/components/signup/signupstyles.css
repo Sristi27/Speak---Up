@@ -10,63 +10,39 @@
     font-weight: 300;
     src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdr.ttf) format('truetype');
   }
+
+
+
   .signup-container  {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-weight: 300;
-  }
-  .signup-container {
     font-family: 'Source Sans Pro', sans-serif;
-    height:100vh;
-    background: #FBD3E9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #BB377D, #FBD3E9);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #BB377D, #FBD3E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    min-height: 100vh;
+    background: 
+    linear-gradient(to left, #BB377D, #FBD3E9); 
     font-weight: 300;
-    /* background: linear-gradient(to bottom right, #50a3a2 0%, #001b10 100%); */
-  }
-  .signup-container ::-webkit-input-placeholder {
-    /* WebKit browsers */
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
-  }
-  .signup-container :-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    font-family: 'Source Sans Pro', sans-serif;
-    opacity: 1;
-    font-weight: 300;
-  }
-  .signup-container ::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    font-family: 'Source Sans Pro', sans-serif;
-    opacity: 1;
-    font-weight: 300;
-  }
-  .signup-container :-ms-input-placeholder {
-    /* Internet Explorer 10+ */
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 300;
+    padding: 20px 0;
   }
 
   .signup-container  .container {
-    max-width:70vw;
-    margin: 0 auto;
+    max-width:80vw;
+    margin:0 auto;
     background-color: white;
-    /* padding: 80px 0; */
-    top:50%;
-    position: relative;
     display: flex;
-    transform: translateY(-50%);
-    padding: 0;
-    /* text-align: center; */
+    border:1px solid white;
+    border-radius:15px;
   }
+
+
   .signup-container .container h1 {
-    font-size: 40px;
+    font-size:2.5em;
     color:#BB377D;
     animation: fadein 3s;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin: 24px 0;
   }
+
 
 @keyframes fadein {
 from { opacity: 0; }
@@ -77,7 +53,7 @@ to   { opacity: 1; }
   .signup-container .container .signupText
   {
      width: 50%;
-     padding: 80px 0;
+     padding:30px 0;
      text-align: center;
   }
 
@@ -87,21 +63,20 @@ to   { opacity: 1; }
     background: url('../../images/women.png') center no-repeat;
     background-size: contain ;
   }
+
+
   .signup-container form {
-    padding: 20px 0;
+    padding: 10px 0;
     position: relative;
     z-index: 2;
-    width:70%;
+    width:80%;
     margin:0 auto;
   }
 
   .signup-container form input {
     -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
     outline: 0;
     border: 1px solid #BB377D;
-    /* background-color: rgba(255, 255, 255, 0.2); */
     width: 85%;
     border-radius: 3px;
     padding: 10px 15px;
@@ -156,7 +131,25 @@ to   { opacity: 1; }
   }
 
 
+  /* webcam component */
 
+
+
+  .signup-container .webcam-container
+  {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding:10px 0;
+  }
+
+  .signup-container .webcam-container .webcam-btn
+  {
+    margin-top: 10px;
+    width:30%;
+  }
+
+  /* end of webcam styles */
 
   .signup-container form input:hover::placeholder
   {
@@ -191,8 +184,11 @@ to   { opacity: 1; }
     }
   }
 
-  @media screen and (max-width:678px)
+
+
+  @media screen and (max-width:1100px)
   {
+
     .signup-container .container
     {
        max-width: 80vw;
@@ -207,7 +203,18 @@ to   { opacity: 1; }
     }
     .signup-container .container .signupText
     {
-      width: 100%;
-      padding:40px 20px;
+      width: 80%;
+      margin:0 auto;
     }
+
+  }
+
+  @media screen and (max-width:800px)
+  {
+
+    .signup-container .webcam-container .webcam-btn
+    {
+      width: 60%;
+    }
+
   }

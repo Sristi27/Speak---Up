@@ -30,7 +30,7 @@ const Add = () => {
           return;
         }
         var data=JSON.stringify({title,body});
-        await fetch("/addPost",
+        await fetch("http://localhost:5000/addPost",
         {
           headers:
           {
@@ -82,6 +82,12 @@ const Add = () => {
                e.preventDefault();
                setBody(e.target.value)
             }}></textarea>
+          </div>
+          <div className="row">
+            <div className="col-lg-3">Health</div>
+            <div className="col-lg-3">Finance</div>
+            <div className="col-lg-3">Workplace</div>
+            <div className="col-lg-3">Domestic</div>
           </div>
           <button type="button" className="btn" id="submit" 
           onClick={(e)=>submitForm(e)}
