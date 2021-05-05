@@ -15,8 +15,7 @@ const videoConstraints = {
   export const WebcamCapture = ({uploadImage}) =>
   
   {
-
-
+    
     const webcamRef = React.useRef(null);
     const [image,setImage]=useState('');
   
@@ -24,7 +23,7 @@ const videoConstraints = {
       () => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImage(imageSrc)
-       downloadImage(imageSrc)
+        downloadImage(imageSrc)
     });
 
 
