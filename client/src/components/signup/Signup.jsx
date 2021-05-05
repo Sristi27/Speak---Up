@@ -45,7 +45,7 @@ const Signup = () => {
         }
 
 
-        fetch('/capture',
+        fetch("/capture",
         {
             method:'POST',
             body:formData
