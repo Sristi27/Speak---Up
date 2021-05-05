@@ -98,6 +98,9 @@ const Signup = () => {
         setPhotoUrl(photo);
         const formData=new FormData();
         formData.append('userImage',photo);
+
+        console.log(photo)
+        
         fetch("/capture",
         {
             method:'POST',
