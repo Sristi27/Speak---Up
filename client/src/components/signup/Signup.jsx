@@ -100,9 +100,13 @@ const Signup = () => {
         formData.append('userImage',photo);
 
         console.log(photo)
-        
+
         fetch("/capture",
         {
+            headers:
+            {
+                'Content-Type':'multipart/form-data'
+            },
             method:'POST',
             body:formData
         }).then(res=>res.json())
