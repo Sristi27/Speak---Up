@@ -30,7 +30,7 @@ const Add = () => {
           return;
         }
         var data=JSON.stringify({title,body});
-        await fetch("/addPost",
+        await fetch("http://localhost:5000/addPost",
         {
           headers:
           {

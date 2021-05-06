@@ -26,7 +26,7 @@ const Signup = () => {
     const [password,setPassword]=useState('');
     const [name,setName]=useState('');
     const [url,setUrl]=useState('')
-    const [success,setSuccess]=useState(false);
+    // const [success,setSuccess]=useState(false);
 
     const[photoUrl,setPhotoUrl]=useState('');
 
@@ -35,11 +35,11 @@ const Signup = () => {
 
         e.preventDefault();
         
-        if(!success)
-        {
-            alert("Retake Image");
-            return;
-        }
+        // if(!success)
+        // {
+        //     alert("Retake Image");
+        //     return;
+        // }
 
         if(email=='' || password=='' || name=='' || 
         !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()) )
@@ -50,7 +50,7 @@ const Signup = () => {
 
 
         setUrl(URL.createObjectURL(photoUrl));
-        fetch("/signup",
+        fetch("http://localhost:5000/signup",
         {
             headers:
             {
@@ -84,68 +84,64 @@ const Signup = () => {
     
 
 
-    const uploadImage = (photo) =>
-     {
+    // const uploadImage = (photo) =>
+    //  {
       
 
-        if(photo=='')
-        {
-            alert("Please capture your photo");
-            setSuccess(false);
-            return;
-        }
+    //     if(photo=='')
+    //     {
+    //         alert("Please capture your photo");
+    //         setSuccess(false);
+    //         return;
+    //     }
 
-        setPhotoUrl(photo);
-        const formData=new FormData();
-        formData.append('userImage',photo);
+    //     setPhotoUrl(photo);
+    //     const formData=new FormData();
+    //     formData.append('userImage',photo);
 
-        console.log(photo)
+    //     console.log(photo)
 
-        fetch("/capture",
-        {
-            headers:
-            {
-                'Content-Type':'multipart/form-data'
-            },
-            method:'POST',
-            body:formData
-        }).then(res=>res.json())
-        .then(async res=>
-        {
-            if(res.error)
-            {
-                alert("Human face not detected");
-                setSuccess(false);
-                return;
-            }
+    //     fetch("http://localhost:5000/capture",
+    //     {
+    //         method:'POST',
+    //         body:formData
+    //     }).then(res=>res.json())
+    //     .then(async res=>
+    //     {
+    //         if(res.error)
+    //         {
+    //             alert("Human face not detected");
+    //             setSuccess(false);
+    //             return;
+    //         }
 
-            // console.log(res)
-            var body=JSON.parse(res.message.body);
+    //         // console.log(res)
+    //         var body=JSON.parse(res.message.body);
             
-            if(body.count>1)
-            {
-                alert("Two faces detected");
-                setSuccess(false);
-                return;
-            }
-            else
-            {
-                if(body.label=='man')
-                {
-                    alert('Male detected');
-                    setSuccess(false);
-                    return;
-                }
+    //         if(body.count>1)
+    //         {
+    //             alert("Two faces detected");
+    //             setSuccess(false);
+    //             return;
+    //         }
+    //         else
+    //         {
+    //             if(body.label=='man')
+    //             {
+    //                 alert('Male detected');
+    //                 setSuccess(false);
+    //                 return;
+    //             }
 
-                else if(body.label=='woman')
-                {
-                    setSuccess(true);
-                    alert('Picture upload successfull')
-                }
-            }
+    //             else if(body.label=='woman')
+    //             {
+    //                 setSuccess(true);
+    //                 alert('Picture upload successfull')
+    //             }
+    //         }
 
-        }).catch(err=>console.log(err))
-    }
+    //     }).catch(err=>console.log(err))
+    // }
 
     return (
         <div className="signup-container">
@@ -159,7 +155,7 @@ const Signup = () => {
             <form className="form">
 
 
-        <WebcamCapture uploadImage={uploadImage}/>
+        {/* <WebcamCapture uploadImage={uploadImage}/> */}
 
                 <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
                 <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>

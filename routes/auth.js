@@ -67,8 +67,8 @@ router.post("/capture",upload.single('userImage'),(req,res)=>
         let formData = {
             //file field need set options 'contentType' and 'filename' for formData
             'file':fs.createReadStream(req.file.path)
-            
         }
+        
         const postUrl = 
         "https://speakupgenderapi.herokuapp.com/predict_api" 
         request.post({url: postUrl,formData: formData }, 

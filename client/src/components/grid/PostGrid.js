@@ -24,7 +24,7 @@ const PostGrid = () => {
     useEffect(
       async()=>
       {
-      await fetch("/allPosts",
+      await fetch("http://localhost:5000/allPosts",
       {
         headers:
         {

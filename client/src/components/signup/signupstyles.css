@@ -22,12 +22,15 @@
     background: 
     linear-gradient(to left, #BB377D, #FBD3E9); 
     font-weight: 300;
-    padding: 20px 0;
+    /* padding: 20px 0; */
+    padding: 100px 0px;
   }
 
   .signup-container  .container {
-    max-width:80vw;
+    /* max-width:80vw; */
+    max-width:60vw;
     margin:0 auto;
+    padding: 20px;
     background-color: white;
     display: flex;
     border:1px solid white;
