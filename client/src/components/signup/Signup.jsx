@@ -49,7 +49,7 @@ const Signup = () => {
         }
 
 
-        setUrl(URL.createObjectURL(photoUrl));
+        // setUrl(URL.createObjectURL(photoUrl));
         fetch("/signup",
         {
             headers:
