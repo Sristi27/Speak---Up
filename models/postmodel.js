@@ -12,6 +12,11 @@ const postSchema = new mongoose.Schema(
 			type: String,
 			required: true
 		},
+		sector:
+		{
+			type: String,
+			required: true
+		},
 		likes:
 		[{
 			type:ObjectId,

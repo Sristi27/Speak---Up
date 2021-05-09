@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import './cameraStyles.css'
+import React, { Component, useState,useEffect } from 'react';
+// import './cameraStyles.css'
 import Webcam from "react-webcam";
 import fs from 'fs'
 const WebcamComponent = () => <Webcam />;
@@ -12,7 +12,9 @@ const videoConstraints = {
     facingMode: "user"
   };
   
-  export const WebcamCapture = ({uploadImage}) =>
+  export const WebcamCapture = ({
+    // uploadImage
+  }) =>
   
   {
     
@@ -22,15 +24,20 @@ const videoConstraints = {
     const capture = React.useCallback(
       () => {
         const imageSrc = webcamRef.current.getScreenshot();
+        console.log(imageSrc)
         setImage(imageSrc)
         downloadImage(imageSrc)
-    });
+    },
+    [webcamRef]);
+
+
+   
 
 
     async function downloadImage(imageSrc) {
       const image = await fetch(imageSrc)
       const imageBlob = await image.blob()
-      uploadImage(imageBlob)
+      // uploadImage(imageBlob)
 
     }
 
@@ -50,7 +57,7 @@ return (
             />:<img src={image}/>}
         </div>
 
-<div className="webcam-bnt">
+      <div className="webcam-bnt">
             {image!=''?
             <button onClick={(e)=>
               {
@@ -63,7 +70,8 @@ return (
                 e.preventDefault();
                 capture();
               }}
-              className="webcam-btn">Capture</button>}
+              className="webcam-btn">Capture</button>
+              }
     </div>
           </div>
         );

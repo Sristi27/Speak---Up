@@ -10,6 +10,7 @@ import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initialState, reducer } from './reducer';
 import Signup from './components/signup/Signup';
 import Contact from './components/Contact/Contact';
+import HomeCmp from './components/HomeCmp';
 
 
 export const UserContext=createContext();
@@ -22,7 +23,6 @@ const Routing = () =>
   useEffect(() =>
   {
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user)
   if(user)
   {
     dispatch({type:"USER",payload:user})
@@ -47,19 +47,18 @@ const Routing = () =>
 
 
 
+
+
 function App() {
 
   const [state,dispatch] = useReducer(reducer,initialState)
-
-
   return (
     <div className="App">
-      
     <UserContext.Provider value={{state,dispatch}}>
-      <BrowserRouter>
-      <Routing/>
-      </BrowserRouter>
-      </UserContext.Provider>
+          <BrowserRouter>
+          <Routing/>
+          </BrowserRouter>
+          </UserContext.Provider>
     </div>
   );
 }

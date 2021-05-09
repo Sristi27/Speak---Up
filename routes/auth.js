@@ -4,51 +4,7 @@ const mongoose=require('mongoose');
 const jwt=require('jsonwebtoken');
 const bcrypt=require('bcryptjs');
 
-var request = require("request"); 
 
-const axios = require('axios');
-
-const multer=require('multer');
-
-
-const multiparty = require("multiparty");
-//method to store image on disks
-//images to be stored in uploads
-
-
-const fs = require('fs')
-const { promisify } = require('util');
-
-const unlinkAsync = promisify(fs.unlink)
-
-
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'public/uploads/')
-      //stored in this detination
-    },
-    filename: function (req, file, cb) {
-      cb(null, 'profile.jpg')
-    }
-  });
-
-
-
-  //this function checks if image type is jpeg/png
-  const filterImage=(req, file, cb)=>{
-   if(file.mimetype ==='image/jpeg' || file.mimetype ==='image/png'){
-       cb(null,true);
-   }else{
-       cb(null, false);
-   }
-
-  }
-
-var upload = multer({ 
-    storage:storage,
-    fileFilter:filterImage
- });
 
 var JWT_SECRET=process.env.JWT_SEC  || "eertyu"
 
@@ -58,49 +14,11 @@ const User = mongoose.model("User");
 
 
 
-
-router.post("/capture",upload.single('userImage'),(req,res)=>
-
-{
-
-
-        let formData = {
-            //file field need set options 'contentType' and 'filename' for formData
-            'file':fs.createReadStream(req.file.path)
-        }
-        
-        const postUrl = 
-        "https://speakupgenderapi.herokuapp.com/predict_api" 
-        request.post({url: postUrl,formData: formData }, 
-            function(err,body) {    
-            fs.unlink(req.file.path, (err) => {
-                if (err) {
-                  console.log(err)
-                  return
-                }
-            })
-        if(err) 
-        {
-            console.log(err)
-            return res.status(400).json({error:err});
-        }
-        else
-        {
-            console.log(body)
-            return res.status(200).json({message:body});
-        }
-    });
-})
-
-
-
-
-
 router.post("/signup",(req,res)=>
 
 {
 
-    const {email,name,password} = req.body;
+    const {email,name,password,sector} = req.body;
     if(!email || !password || !name)
     {
         return res.status(404).json({error:"Please fill all the fields!"});
@@ -128,8 +46,7 @@ router.post("/signup",(req,res)=>
                             {
                                 email,
                                 password:hashedPassword,
-                                name,
-                                image:'./profile.jpg'
+                                name
                             })
                     }
                     else

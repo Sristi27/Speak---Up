@@ -4,6 +4,7 @@ import './poststyles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { faThumbsDown } from '@fortawesome/free-solid-svg-icons'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 import Nav from '../nav/Nav';
@@ -14,8 +15,9 @@ const PostGrid = () => {
 
     const [allposts,setAllPosts]=useState('');
     const [likes,setLikes]=useState('');
-
+    const [filter,setFilter]=useState('All');
     const { state, dispatch } = useContext(UserContext);
+    const [tempPosts,setTempPosts]=useState('');
 
 
     const history=useHistory();
@@ -37,9 +39,8 @@ const PostGrid = () => {
       .then(res=>res.json())
       .then(res=>
         {
-          // console.log(res.posts)
-          // console.log(localStorage.getItem('user'))
           setAllPosts(res.posts);
+          setTempPosts(res.posts);
         })
       .catch(err=>console.log(err))
     },[]);
@@ -48,7 +49,7 @@ const PostGrid = () => {
     const increment = async(id) =>
     {
         
-        await fetch("/like",
+        await fetch("http://localhost:5000/like",
            {
              method:"put",
              headers: 
@@ -66,14 +67,21 @@ const PostGrid = () => {
            }).then(res=>res.json())
            .then(result=>
             {
-              setAllPosts(result.posts)
+              var posts=result.posts;
+               setTempPosts(posts)
+               if(filter=='All') setAllPosts(posts);
+               else
+               {
+                posts=posts.filter(post=>{return post.sector==filter});
+                setAllPosts(posts)
+               }
             }).catch(err=>alert(err))
     }
 
     const decrement = async(id) =>
     {
         
-        await fetch("/unlike",
+        await fetch("http://localhost:5000/unlike",
            {
              method:"put",
              headers: 
@@ -81,7 +89,7 @@ const PostGrid = () => {
                "Content-Type":"application/json",
                "Authorization":"Bearer"+localStorage.getItem("jwt")
       
-             },
+             }, 
              body:JSON.stringify(
                   {
                       post_id:id
@@ -91,14 +99,23 @@ const PostGrid = () => {
            }).then(res=>res.json())
            .then(result=>
             {
-              setAllPosts(result.posts)
+               var posts=result.posts;
+               setTempPosts(posts)
+               if(filter=='All') setAllPosts(posts);
+               else
+               {
+                posts=posts.filter(post=>{return post.sector==filter});
+                setAllPosts(posts)
+               }
             }).catch(err=>alert(err))
         
     }
 
     const delPost = async(id) =>
     {
-        await fetch("/deletePost",
+       console.log(tempPosts)
+       console.log(id)
+        await fetch(`http://localhost:5000/deletePost/${id}`,
         {
           method:'delete',
           header:
@@ -106,21 +123,41 @@ const PostGrid = () => {
             "Content-Type":"application/json",
             "Authorization":"Bearer"+localStorage.getItem("jwt")
       
-          },
-          body:JSON.stringify(
-               {
-                   post_id:id
-               }
-             )
+          }
           
         }).then(res=>res.json())
         .then(result=>
          {
-          //  alert(result.message);
-           setAllPosts(result.posts);
+           alert('Post deleted successfully')
+          var posts=result.posts;
+          setTempPosts(posts)
+          setAllPosts(posts);
+          setFilter('All')
          }).catch(err=>alert(err))
      
     }
+
+
+
+
+    //filter categories
+    const filterPosts = (category) =>
+    {
+        setFilter(category)
+        if(category=="All")
+        setAllPosts(tempPosts);
+        else
+        {
+          //  console.log(category)
+           var postArray=tempPosts;
+           console.log(tempPosts)
+           postArray=postArray.filter(post=> {return post.sector==category});
+          //  console.log(postArray)
+           setAllPosts(postArray)
+        }
+    }
+
+    //posts
 
     const PostCard = ({post})=>
     {
@@ -147,16 +184,19 @@ const PostGrid = () => {
                        {postedBy==state._id?
 
                        <p className="cardText" 
-                       style={{width:'100%',textAlign:'center'}}>
-                         <button className="btn" style={{width:'40%'}}
+                       style={{width:'100%'}}>
+                         <label>
+                         #{post.sector}</label>
+                         <button className="btn delete"
                        onClick={()=>delPost(post._id)}>Delete</button>
                         </p>:
 
-                       <p className="card-text">
+                       <p className="cardText">
                        <button className="btn" 
                        disabled={post.likes.includes(state._id)}
                        onClick={()=>increment(post._id)}>
                        <FontAwesomeIcon icon={faThumbsUp} className="icon"/>
+                       <span style={{marginLeft:'5px'}}>{post.likes.length}</span>
                        </button>
                        <button className="btn"
                         onClick={()=>decrement(post._id)}
@@ -164,8 +204,8 @@ const PostGrid = () => {
                        <FontAwesomeIcon icon={faThumbsDown}  
                         className="icon" />
                        </button>
-                        <label style={{float:'right'}}>
-                          {post.likes.length} Likes</label>
+                        <label>
+                         #{post.sector}</label>
                        </p>
                        }
         </div></div>
@@ -174,12 +214,78 @@ const PostGrid = () => {
     }
 
 
+    
+
+
     return (
 <div className="gridContainer">
         <Nav/>
+
          <div className="homegrid">
-            
-          <div class="card-columns">
+           
+
+
+             <div className="filter">
+
+               <h6>Filter Category</h6>
+               <div className="radiobtn">
+               <div class="form-check">
+              <input class="form-check-input radio" type="radio" onClick={(e)=>
+              {
+                filterPosts(e.target.value)
+              }}
+              value="All" checked={filter=='All'}
+              name="flexRadioDefault" id="flexRadioDefault1"/>
+              <label class="form-check-label" for="flexRadioDefault1">
+                All
+              </label>
+            </div>
+             <div class="form-check">
+              <input class="form-check-input radio" type="radio"  value="Health"
+              name="flexRadioDefault" id="flexRadioDefault1" onClick={(e)=>
+              {
+                filterPosts(e.target.value)
+              }}/>
+              <label class="form-check-label" for="flexRadioDefault1">
+                Health
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" value="Domestic"
+              name="flexRadioDefault" id="flexRadioDefault2" onClick={(e)=>
+                {
+                  filterPosts(e.target.value)
+                }}/>
+              <label class="form-check-label" for="flexRadioDefault2">
+               Domestic
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" value="Workplace"
+              name="flexRadioDefault" id="flexRadioDefault2" onClick={(e)=>
+                {
+                  filterPosts(e.target.value)
+                }}/>
+              <label class="form-check-label" for="flexRadioDefault2">
+               Workplace
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input radio" type="radio" value="Finance"
+              name="flexRadioDefault" id="flexRadioDefault2" onClick={(e)=>
+                {
+                  filterPosts(e.target.value)
+                }}/>
+              <label class="form-check-label" for="flexRadioDefault2">
+               Finance
+              </label>
+            </div>
+             </div>
+             </div>
+
+
+             
+             <div class="card-columns">
                 {allposts!='' && allposts.map((post)=>
                 {
                   return(
@@ -187,10 +293,12 @@ const PostGrid = () => {
                   )
                 })}
                 {allposts==''?<div className="links">
-                <Link to="/add"><button>Add a Post</button></Link>
+                  <h3>No new posts here</h3>
+                <Link to="/add"><button>Create Post</button></Link>
                 </div>:''}
             </div>
-            </div>
+            
+          </div>
             <Footer/>
             </div>
     )
