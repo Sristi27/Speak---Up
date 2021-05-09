@@ -64,7 +64,7 @@
 .gridContainer .homegrid .filter
 {
     min-width: 18%;
-    max-height: 83vh;
+    height: 83vh;
     background-color: white;
     /* min-height: 83vh; */
     padding-top:4%;
