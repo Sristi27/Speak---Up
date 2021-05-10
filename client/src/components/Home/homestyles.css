@@ -59,6 +59,7 @@
   .home-text
   {
     width: 50%;
+    padding:10px 20px;
   }
 
   .home .header-content img {
@@ -70,11 +71,26 @@
     cursor: pointer;
   }
 
+  .home .carousel-caption button
+  {
+      background-color: #BB377D;
+      border: 2px solid white;
+      border-radius: 15px;
+      padding: 10px 22px;
+  }
+
+  .home .carousel-caption button a.smooth-scroll
+  {
+    color:white;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight:500;
+  }
   
-  @media screen and (max-width:800px)
+  @media screen and (max-width:1000px)
   {
     .home .header-content{
-      margin:10% 0;
+      margin:16% 0;
     }
 
     .home-text
@@ -83,9 +99,49 @@
       margin-bottom:10%;
     }
 
+
+  }
+
+  @media screen and (max-width:800px)
+  {
+    .home .header-content{
+      margin:10% 0;
+    }
+
     .home .header-content img {
        display: none
     };
+
+    .carousel-item
+    {
+      height:100vh;
+    }
+
+    .carousel-item img
+    {
+      height: 45vh;
+      background-size: cover;
+    }
+
+    .d-none
+    {
+      display: block!important;
+    }
+
+    .home .carousel-caption button
+  {
+      background-color: #BB377D;
+      border: 2px solid white;
+      border-radius: 15px;
+      padding:5px 8px;
+  }
+
+  .home .carousel-caption button a.smooth-scroll
+  {
+    color:white;
+    text-decoration: none;
+    font-size: 0.8em;
+  }
 
 
   }

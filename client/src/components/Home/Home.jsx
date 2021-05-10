@@ -8,6 +8,9 @@ import violence3 from './../../images/violence3.jpeg'
 import violence4 from './../../images/violence4.jpeg'
 import home from './../../images/home.png'
 import v5 from '../../images/v5.jpeg'
+import forwomen from '../../images/forwomen.jpeg'
+import hear from '../../images/hear.jpeg'
+import w from '../../images/w.jpeg'
 
 const Home = () => {
 
@@ -31,17 +34,30 @@ const Home = () => {
   </ol>
   <div class="carousel-inner">
     <div className="carousel-item active">
-    <img class="d-block w-100" src={v5} style={{backgroundSize:'cover'}}/>
+    <img class="d-block w-100" src={w}  alt="First slide"/>
+    <div class="carousel-caption  d-md-block">
+    <button className="btn btn-primary">
+    <a href="#content" class="smooth-scroll">Read More</a>
+    </button>
+      </div>
     </div>
 
 
     <div class="carousel-item">
-      <img class="d-block w-100" src={violence3} alt="First slide"/> 
+      <img class="d-block w-100" src={violence3} alt="Second slide"/> 
+      <div class="carousel-caption d-md-block">
+      <button className="btn btn-primary">
+          <a href="#content" class="smooth-scroll">Read More</a></button>
+        </div>
     </div>
 
 
     <div class="carousel-item">
       <img class="d-block w-100" src={violence4} alt="Third slide"/>
+      <div class="carousel-caption  d-md-block">
+        <button className="btn btn-primary">
+          <a href="#content" class="smooth-scroll">Read More</a></button>
+         </div>
     </div>
 
   </div>
@@ -59,7 +75,7 @@ const Home = () => {
                
                
                
-               <div className="header-content">
+               <section className="header-content" id="content">
 
                 <img src={home}/>
 
@@ -80,7 +96,7 @@ const Home = () => {
                     <Link to="/add"><button>Share yours'</button></Link>
                    </div>
                     
-                </div>
+                </section>
                <Footer/>
                 {/*  */}
        
