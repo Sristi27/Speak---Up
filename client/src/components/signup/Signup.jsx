@@ -50,7 +50,7 @@ const Signup = () => {
 
 
         // setUrl(URL.createObjectURL(photoUrl));
-        fetch("http://localhost:5000/signup",
+        fetch("/signup",
         {
             headers:
             {
@@ -102,7 +102,7 @@ const Signup = () => {
 
         console.log(photo)
 
-        fetch("http://localhost:5000/capture",
+        fetch("/capture",
         {
             method:'POST',
             body:formData
