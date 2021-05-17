@@ -5,6 +5,7 @@
 
  <p align="center">
   <img width="250" height="280" src="https://user-images.githubusercontent.com/53037053/113508400-6a295680-956d-11eb-96d0-052ef067b2e0.png">
+
 </p>   
  
 
@@ -48,6 +49,7 @@ Technologies used:
 ~ Express for Server Side Code
 ~ MongoDB Atlas as database support
 ~ React for Client Side Code
+~ Gender Detection API hosted with heroku
 
 
 ## What's next for Speak-Up women
