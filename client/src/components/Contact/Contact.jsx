@@ -22,7 +22,9 @@ const Contact = () => {
             </h2>
             <p className="content-para">
             In case of any immediate help,reach out to us at
-             <a href="mailto:sristi2705@gmail.com"
+             <a 
+            //  href="mailto:sristi2705@gmail.com"
+            href=""
              className="mail">
                  wespeakup@gmail.com
             </a>
@@ -35,15 +37,27 @@ const Contact = () => {
                 <br/><br/>
                 <ul>
                     <li>
-                        <a href="https://www.linkedin.com/in/sristi-chowdhury-3660941a5/"
-                        target="_blank">
+                        <a 
+                        // href="https://www.linkedin.com/in/sristi-chowdhury-3660941a5/"
+                       href=""
+                    //    target="_blank"
+                       >
                             <FontAwesomeIcon icon={faLinkedinIn}/></a></li>
-                    <li><a href="https://github.com/Sristi27" target="_blank"><i class="fa fa-github">
+                    <li><a 
+                    href=""
+                    // href="https://github.com/Sristi27" 
+                    // target="_blank"
+                    >
+                    <i class="fa fa-github">
                         </i></a></li>
-                    <li><a href="https://twitter.com/SRISTICHOWDHUR6" target="_blank">
+                    <li><a href=""
+                    // href="https://twitter.com/SRISTICHOWDHUR6" target="_blank"
+                    >
                         <FontAwesomeIcon icon={faTwitter} /></a></li>
-                    <li><a href="https://www.linkedin.com/in/sristi-chowdhury-3660941a5/"
-                        target="_blank">
+                    <li><a href=""
+                    // href="https://www.linkedin.com/in/sristi-chowdhury-3660941a5/"
+                        // target="_blank"
+                        >
                         <FontAwesomeIcon icon={faInstagram} /></a></li>
                 </ul>
             </p>

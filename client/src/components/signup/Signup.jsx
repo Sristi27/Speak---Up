@@ -6,7 +6,10 @@ import signupIcon from './../../images/signupIcon.png'
 import {UserContext} from '../../App'
 import { Link } from 'react-router-dom'
 // import {Camera} from '../camera'
-import { WebcamCapture } from '../camera-feed'
+import { WebcamCapture } from '../Webcam/camera-feed'
+import Success from '../../Utils/Success'
+import Danger from '../../Utils/Danger'
+import Loader from '../../Utils/Loader'
 
 
 
@@ -26,18 +29,25 @@ const Signup = () => {
     const [password,setPassword]=useState('');
     const [name,setName]=useState('');
     const [url,setUrl]=useState('')
-    const [success,setSuccess]=useState(false);
+    const [capturesuccess,setCaptureSuccess]=useState(false);
+    const [captureDanger,setCaptureDanger]=useState(false)
+    const [signupSuccess,setSignupSucess]=useState(false);
+    const [signupDanger,setSignupDanger] = useState(false);
+    const [loading,setLoading]=useState(false)
 
     const[photoUrl,setPhotoUrl]=useState('');
 
     const submitSignup =(e)=>
     {
 
+        setLoading(true)
         e.preventDefault();
         
-        // if(!success)
+        // if(!capturesuccess)
         // {
         //     alert("Retake Image");
+        //     setSignupDanger(true);
+        //     setLoading(false)
         //     return;
         // }
 
@@ -45,6 +55,8 @@ const Signup = () => {
         !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()) )
         {
             alert("Please fill all the fields correctly!")
+            setSignupDanger(true);
+            setLoading(false);
             return;
         }
 
@@ -61,20 +73,21 @@ const Signup = () => {
             }).then(res=>res.json())
                 .then(res=>
                         {
-                                // console.log(res)
+                                setLoading(false);
                                 if(!res.error)
                                 {
-                                    // console.log(res)
-                                    alert('Signup successfull')
-                                    history.push("/signin")
+                                    setSignupSucess(true)
                                 }
                                 else
                                 {
-                                    alert(res.error);
+                                    setSignupDanger(false)
                                     return;
                                 }
                         })
-                    .catch(err=>alert(err))
+                    .catch(err=>{
+                        setSignupDanger(true);
+                        alert(err)
+                    })
                 
                 }
             
@@ -89,10 +102,11 @@ const Signup = () => {
      {
       
 
+        setLoading(true);
         if(photo=='')
         {
             alert("Please capture your photo");
-            setSuccess(false);
+            setCaptureSuccess(false);
             return;
         }
 
@@ -100,7 +114,7 @@ const Signup = () => {
         const formData=new FormData();
         formData.append('userImage',photo);
 
-        console.log(photo)
+        // console.log(photo)
 
         fetch("/capture",
         {
@@ -109,20 +123,20 @@ const Signup = () => {
         }).then(res=>res.json())
         .then(async res=>
         {
+
+            setLoading(false);
             if(res.error)
             {
                 alert("Human face not detected");
-                setSuccess(false);
+                setCaptureDanger(false);
                 return;
             }
-
-            // console.log(res)
             var body=JSON.parse(res.message.body);
             
             if(body.count>1)
             {
                 alert("Two faces detected");
-                setSuccess(false);
+                setCaptureDanger(false);
                 return;
             }
             else
@@ -130,27 +144,38 @@ const Signup = () => {
                 if(body.label=='man')
                 {
                     alert('Male detected');
-                    setSuccess(false);
+                    setCaptureDanger(false);
                     return;
                 }
 
                 else if(body.label=='woman')
                 {
-                    setSuccess(true);
-                    alert('Woman detected!Picture upload successfull.Please fill out the remaining form')
+                    setCaptureSuccess(true);
+                    alert('Woman detected!Picture upload successfull.\
+                    Please fill out the remaining form')
                 }
             }
 
-        }).catch(err=>console.log(err))
+        }).catch(error=>
+            {
+                setLoading(false);
+                alert(error)
+            })
     }
 
     return (
         <div className="signup-container">
+        {signupSuccess?
+        <Success msg={"Signup successfull"} navigate ={"login"}/>:''}
+        {signupDanger?
+        <Danger msg={"Signup unsuccessfull.Please try again!"}/>:''}
+
             <div className="container">
             <div className="signupDesign"></div>
             
                 <div className="signupText">
-                <h1>Welcome to Speak Up!<span className="icon">
+                {loading?<Loader/>:''}
+                <h1>Welcome to Speak UP!<span className="icon">
                     <img src={signupIcon} width="50px" 
                 height="40px"/></span></h1>
             <form className="form">
@@ -158,7 +183,8 @@ const Signup = () => {
 
         {/* <WebcamCapture uploadImage={uploadImage}/> */}
 
-                <input type="text" placeholder="Name" onChange={(e)=>setName(e.target.value)}/>
+                <input type="text" placeholder="Name" 
+                onChange={(e)=>setName(e.target.value)}/>
                 <input type="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)}/>
                 <input type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                 <button type="submit" id="login-button" 

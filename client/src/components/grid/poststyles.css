@@ -119,6 +119,10 @@ border-radius:10px;
 }
 
 
+.card-text
+{
+    font-size: 1.4em;
+}
 
 .cardText
 {

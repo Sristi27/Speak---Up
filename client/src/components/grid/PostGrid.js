@@ -9,6 +9,9 @@ import { Link, useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 import Nav from '../nav/Nav';
 import Footer from '../Footer/Footer';
+import Loader from '../../Utils/Loader';
+import Success from '../../Utils/Success';
+import Danger from '../../Utils/Danger';
 
 const PostGrid = () => {
 
@@ -18,6 +21,8 @@ const PostGrid = () => {
     const [filter,setFilter]=useState('All');
     const { state, dispatch } = useContext(UserContext);
     const [tempPosts,setTempPosts]=useState('');
+    const [success,setSuccess]=useState(false)
+    const [danger,setDanger]=useState(false)
 
 
     const history=useHistory();
@@ -42,7 +47,7 @@ const PostGrid = () => {
           setAllPosts(res.posts);
           setTempPosts(res.posts);
         })
-      .catch(err=>console.log(err))
+      .catch(err=>alert(err))
     },[]);
 
 
@@ -113,6 +118,8 @@ const PostGrid = () => {
 
     const delPost = async(id) =>
     {
+      setSuccess(false)
+      setDanger(false)
        console.log(tempPosts)
        console.log(id)
         await fetch(`/deletePost/${id}`,
@@ -128,12 +135,12 @@ const PostGrid = () => {
         }).then(res=>res.json())
         .then(result=>
          {
-           alert('Post deleted successfully')
+          setSuccess(true)
           var posts=result.posts;
           setTempPosts(posts)
           setAllPosts(posts);
           setFilter('All')
-         }).catch(err=>alert(err))
+         }).catch(err=>setDanger(true))
      
     }
 
@@ -157,7 +164,11 @@ const PostGrid = () => {
         }
     }
 
+
+   
+
     //posts
+
 
     const PostCard = ({post})=>
     {
@@ -176,8 +187,20 @@ const PostGrid = () => {
           style={{float:'right'}}>Anonymous</h6>
           }
    
-                       <h3 className="card-title">{post.title}</h3>
-                       <p className="card-text">{post.body}</p>
+                       <h4 className="card-title">{post.body.title}</h4>
+
+                      <p className="card-text">
+                       <h5 class="text-secondary">Issues faced</h5>
+                         {post.body.issues}</p>
+                       <p className="card-text">
+
+                       <h5 class="text-secondary">How to overcome the situation?</h5>
+                         {post.body.body}
+                         </p>
+                       <p className="card-text">
+                         <h5 class="text-secondary">Advice to others</h5>
+                         {post.body.advice}
+                         </p>
                       
                       {/* delete only if added by that user */}
                       {/* else like/unlike  */}
@@ -186,7 +209,7 @@ const PostGrid = () => {
                        <p className="cardText" 
                        style={{width:'100%'}}>
                          <label>
-                         #{post.sector}</label>
+                         #{post.body.sector}</label>
                          <button className="btn delete"
                        onClick={()=>delPost(post._id)}>Delete</button>
                         </p>:
@@ -205,7 +228,7 @@ const PostGrid = () => {
                         className="icon" />
                        </button>
                         <label>
-                         #{post.sector}</label>
+                         #{post.body.sector}</label>
                        </p>
                        }
         </div></div>
@@ -219,13 +242,22 @@ const PostGrid = () => {
 
     return (
 <div className="gridContainer">
+  
+{!allposts && !tempPosts ? 
+<Loader/>:
+<>
         <Nav/>
 
+        {success?
+         <Success msg=
+           {"Post has been deleted successfully!"}/>:''}
+          {danger?
+          <Danger msg=
+          {"Post could not be deleted!"}/>:''}
+         
          <div className="homegrid">
-           
-
-
-             <div className="filter">
+         
+           <div className="filter">
 
                <h6>Filter Category</h6>
                <div className="radiobtn">
@@ -283,22 +315,24 @@ const PostGrid = () => {
              </div>
              </div>
 
-
-             
-             <div class="card-columns">
-                {allposts!='' && allposts.map((post)=>
-                {
-                  return(
-                     <PostCard post={post}/>
-                  )
-                })}
-                {allposts==''?<div className="links">
-                  <h3>No new posts here</h3>
-                <Link to="/add"><button>Create Post</button></Link>
-                </div>:''}
-            </div>
+          <div class="card-columns">
+           
+           {allposts!='' && allposts.map((post)=>
+           {
+             return(
+                <PostCard post={post}/>
+             )
+           })}
+              {allposts==''?<div className="links">
+                <h3>No new posts here</h3>
+              <Link to="/add"><button>
+                Create Post</button></Link>
+              </div>:''}
+       </div>
+            
             
           </div>
+          </>}
             <Footer/>
             </div>
     )

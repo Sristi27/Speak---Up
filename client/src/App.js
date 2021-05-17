@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import Add from './components/addPosts/Add';
+import Add from './components/NewPost/Add';
 import PostGrid from './components/grid/PostGrid';
-
 import {Route,Switch,BrowserRouter, useHistory} from 'react-router-dom';
 import Home from './components/Home/Home';
 import Signin from './components/signin/Signin';
@@ -10,7 +8,7 @@ import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initialState, reducer } from './reducer';
 import Signup from './components/signup/Signup';
 import Contact from './components/Contact/Contact';
-import HomeCmp from './components/HomeCmp';
+import newUser from './components/newUser/newUser';
 
 
 export const UserContext=createContext();
@@ -28,7 +26,9 @@ const Routing = () =>
     dispatch({type:"USER",payload:user})
   }
   else{
-    history.push('/signin')
+    history.push('/newUser')
+    //history.push('/signin') //first make them go to opening page
+    //then from there redirect to signin page
   }
   },[])
 
@@ -41,6 +41,7 @@ const Routing = () =>
     <Route path="/signup" component={Signup}/>
     <Route path="/signin" component={Signin}/>
     <Route path="/contact" component={Contact}/>
+    <Route path="/newUser" component={newUser}/>
   </Switch>
   )
 }

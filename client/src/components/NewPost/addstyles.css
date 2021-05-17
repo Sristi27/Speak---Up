@@ -1,0 +1,195 @@
+.add-container{
+   /* min-height:100vh; */
+   color:#BB377D;
+   overflow: hidden;
+
+}
+.add-container .form-container
+{
+    top:30%;
+}
+
+.add-container #women
+{
+    width:40%;
+    height:400px;
+    float:right
+}
+
+
+
+
+.add-container .container
+{
+    display: flex;
+    min-height: 120vh;
+    flex-direction: row;
+    padding:28px 0;
+}
+
+
+
+
+.radio-toolbar {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-grow: 2;
+  }
+  
+
+
+
+  .radio-toolbar input[type="radio"] {
+    visibility: hidden;
+    display: none;
+  }
+
+
+  
+  .radio-toolbar label {
+      display: inline-block;
+      background-color: white;
+      padding: 10px 20px;
+      font-family: sans-serif, Arial;
+      font-size: 16px;
+      border: 1px solid #BB377D;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  .radio-toolbar label:hover {
+    background-color: rgb(245, 198, 241);
+    color:rgb(160, 5, 101)
+  }
+  
+  .radio-toolbar input[type="radio"]:focus + label {
+      border: 1px dashed #BB377D;
+  }
+  
+  .radio-toolbar input[type="radio"]:checked + label {
+      background-color: #BB377D;
+      color:white
+  }
+
+  
+.add-container .text
+{
+    width:50%;
+}
+
+.add-container .image
+{
+  width: 100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+  background: url('./../../images/add.jpeg') no-repeat;
+  background-size: contain;
+}
+.add-container .text .form-container
+{
+    width:90%;
+    margin:0 auto;
+}
+
+.add-container .text .title
+{
+    margin-bottom:7%;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.add-container .labels
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.add-container .h1-title
+{
+    padding-bottom: 6px;
+    border-bottom:6px dotted #BB377D;
+
+}
+
+.add-container .image-holder
+{
+    width:50%;
+    padding:120px 20px;
+    height:100vh;
+}
+
+.add-container button#submit
+{
+    color: white;
+    width: 100%;
+    padding:10px 20px;
+    background-color: #BB377D;
+    border-radius: 5px;
+}
+
+.add-container button#submit:hover
+{
+    background-color:white;
+    color:#BB377D;
+    border:1px solid #BB377D;
+    border-radius:15px;
+}
+
+
+@media screen and (max-width:1200px)
+{
+     .add-container .image-holder
+     {
+         padding-top:70px;
+     }
+
+
+        .radio-toolbar label {
+            padding: 5px 10px;
+            font-size:1.1em;
+        }
+  
+  
+}
+
+
+@media screen and (max-width:1000px)
+{
+
+   
+
+    .add-container .container
+    {
+        
+        padding:45px 0;
+    }
+
+
+    .add-container .text
+    {
+        width:100%;
+    }
+    
+    .add-container .form-container
+    {
+        width:50%;
+        margin:0 auto;
+        top:30%;
+    }
+    .add-container .image-holder
+    {
+    display: none;
+    }
+    .add-container .text
+    {
+        width:100%;
+        margin-left: 0;
+    }
+
+}
+
+

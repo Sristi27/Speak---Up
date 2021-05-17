@@ -39,7 +39,6 @@ const Nav = () => {
           </ul>
 
           <ul class="navbar-nav my-2 my-lg-0">
-
           <li className="nav-item">
 
               <a className="nav-link" href="/contact">
@@ -48,9 +47,12 @@ const Nav = () => {
                 </li>
                 <li className="nav-item">
 
-              <a className="nav-link" href="https://github.com/Sristi27/BW-Hacks"
-              target="_blank">
-              <i class="fa fa-github" style={{fontSize:'27px',color:'black'}}></i></a>
+              <a className="nav-link" 
+              // href="https://github.com/Sristi27/BW-Hacks"
+              href=""
+              // target="_blank"
+              >
+              <i class="fa fa-github icon"></i></a>
                 </li>
           <li className="nav-item">
 

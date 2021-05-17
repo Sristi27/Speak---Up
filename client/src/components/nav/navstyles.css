@@ -9,7 +9,40 @@ nav a{
     font-size: 20px;
 }
 
-nav li:active
-{
+.navbar-nav > li > a{
+    padding:2px 20px;
+  }
+
+.navbar-nav > li > a:hover{
+    background-color: #BB377D;
+    border:2px solid #BB377D;
+    border-radius:15px;
+    color: #FFFFFF!important;
+  }
+
+
+  .navbar-nav > li > a:focus{
+    background-color: #BB377D;
+    border:2px solid #BB377D;
+    border-radius:15px;
+    color: #FFFFFF!important
+  }
+
+  .navbar-nav > li > a:active{
+    border:2px solid #BB377D;
+    border-radius:15px;
+    background-color: #BB377D;
+    color: #FFFFFF!important;
+  }
+
+
+  .nav-link .icon
+  {
+    font-size:27px;
     color:black
-}
+  }
+
+  .nav-link .icon:hover
+  {
+    color:white
+  }
