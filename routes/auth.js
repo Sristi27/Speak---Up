@@ -82,7 +82,7 @@ router.post("/signin",(req,res)=>
             {
                 if(!savedUser)
                 {
-                    return res.status(404).json({message:"User not found!"});
+                    return res.status(404).json({error:"User not found!"});
                 }
 
                 bcrypt.compare(password,savedUser.password)
@@ -101,12 +101,12 @@ router.post("/signin",(req,res)=>
                             return res.json({message:"Signed in successfully",token:token,user:savedUser});
                         }
                         else{
-                            return res.status(404).json({message:"Authentication Failed"})
+                            return res.status(404).json({error:"Authentication Failed"})
                         }
                     }
-                ).catch(err=>{return res.status(400).json({error:err})})
+                ).catch(err=>{return res.status(404).json({error:err})})
             }
-        ).catch(err=> {return res.status(400).json({error:err})})
+        ).catch(err=> {return res.status(404).json({error:err})})
 })
 
 

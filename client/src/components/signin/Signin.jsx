@@ -53,6 +53,7 @@ const Signin = () => {
                     else
                     {
                          alert(res.error)
+                         return;
                     }
             })
         .catch(err=>alert(err))
