@@ -45,7 +45,7 @@ const Nav = () => {
                Contact Us</a>
 
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
 
               <a className="nav-link" 
               // href="https://github.com/Sristi27/BW-Hacks"
@@ -53,7 +53,7 @@ const Nav = () => {
               // target="_blank"
               >
               <i class="fa fa-github icon"></i></a>
-                </li>
+                </li> */}
           <li className="nav-item">
 
            <a className="nav-link" style={{color:'red'}}

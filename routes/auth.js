@@ -31,7 +31,7 @@ router.post("/signup",(req,res)=>
             if(user)
             {
                 return res.status(404)
-                .json({message:"User already exists!"});
+                .json({error:"User already exists!"});
             }
 
             //if no user with the email exists,then create a new one

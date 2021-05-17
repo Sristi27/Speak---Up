@@ -41,6 +41,8 @@ const Signup = () => {
     {
 
         setLoading(true)
+        setSignupDanger(false);
+        setSignupSucess(false);
         e.preventDefault();
         
         // if(!capturesuccess)
@@ -62,7 +64,7 @@ const Signup = () => {
 
 
         // setUrl(URL.createObjectURL(photoUrl));
-        fetch("/signup",
+        fetch("http://localhost:5000/signup",
         {
             headers:
             {
@@ -73,16 +75,20 @@ const Signup = () => {
             }).then(res=>res.json())
                 .then(res=>
                         {
-                                setLoading(false);
                                 if(!res.error)
                                 {
+
                                     setSignupSucess(true)
+                                    setLoading(false);
                                 }
                                 else
                                 {
-                                    setSignupDanger(false)
+                                    alert(res.error)
+                                    setSignupDanger(true)
+                                    setLoading(false);
                                     return;
                                 }
+
                         })
                     .catch(err=>{
                         setSignupDanger(true);
@@ -166,7 +172,8 @@ const Signup = () => {
     return (
         <div className="signup-container">
         {signupSuccess?
-        <Success msg={"Signup successfull"} navigate ={"login"}/>:''}
+        <Success msg={"Signup successfull"} 
+        navigate ={"login"}/>:''}
         {signupDanger?
         <Danger msg={"Signup unsuccessfull.Please try again!"}/>:''}
 
@@ -194,8 +201,6 @@ const Signup = () => {
 
                 <p className="redirect">Already have an account?
                     <Link to="/signin" className="loginLink">Login here..</Link></p>
-            
-               
                 </div>
             </div>
         </div>
