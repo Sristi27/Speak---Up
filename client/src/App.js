@@ -21,7 +21,8 @@ const Routing = () =>
   useEffect(() =>
   {
   const user = JSON.parse(localStorage.getItem('user'));
-  if(user)
+  // console.log(user)
+  if(user!=null)
   {
     dispatch({type:"USER",payload:user})
   }
