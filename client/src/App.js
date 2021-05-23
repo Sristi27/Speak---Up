@@ -28,7 +28,8 @@ const Routing = () =>
   }
   else{
     history.push('/newUser')
-    //history.push('/signin') //first make them go to opening page
+    //history.push('/signin') 
+    //first make them go to opening page
     //then from there redirect to signin page
   }
   },[])
