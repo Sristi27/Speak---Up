@@ -1,7 +1,7 @@
 
 # Speak up Women!
 
-## Check out our app <a href="https://womenspeak.herokuapp.com/"> here </a>  mail : neha@gmail.com Password : 123
+## Check out our app <a href="https://womenspeak.herokuapp.com/"> here </a>  mail : sri27@gmail.com Password : 123
 
  <p align="center">
   <img width="250" height="280" src="https://user-images.githubusercontent.com/53037053/113508400-6a295680-956d-11eb-96d0-052ef067b2e0.png">
