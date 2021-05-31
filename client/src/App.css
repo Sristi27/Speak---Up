@@ -1,0 +1,16 @@
+.loader
+{
+    position:absolute;
+    top:30%;
+    left:50%;
+    transform: translate(-10%,-10%);
+
+}
+
+
+.success .navigate 
+{
+   color:inherit;
+   text-decoration: underline;
+   margin:0 5px;
+}

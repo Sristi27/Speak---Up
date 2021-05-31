@@ -1,0 +1,229 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 200;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i94_wlxdr.ttf) format('truetype');
+  }
+  @font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdr.ttf) format('truetype');
+  }
+
+
+
+  .signup-container  {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    min-height: 100vh;
+    background: 
+    linear-gradient(to left, #3a9ce2, #f3eff1); 
+    font-weight: 300;
+    padding:50px 0px;
+  }
+
+  .signup-container  .container {
+    /* max-width:80vw; */
+    max-width:70vw;
+    margin:40px auto;
+    padding:40px 30px;
+    background-color: white;
+    display: flex;
+    border:1px solid white;
+    border-radius:15px;
+  }
+
+
+  .signup-container .container h1 {
+    font-size:2.5em;
+    color:#6aa6d1;
+    animation: fadein 3s;
+    font-weight: bold;
+    margin: 24px 0;
+  }
+
+
+@keyframes fadein {
+from { opacity: 0; }
+to   { opacity: 1; }
+}
+
+
+  .signup-container .container .signupText
+  {
+     width: 50%;
+     padding:20px 0;
+     text-align: center;
+  }
+
+  .signup-container .container .signupDesign
+  {
+    width: 50%;
+    background: url('../../images/signup.png') center no-repeat;
+    background-size: contain ;
+  }
+
+
+  .signup-container form {
+    padding: 10px 0;
+    position: relative;
+    z-index: 2;
+    width:80%;
+    margin:0 auto;
+  }
+
+  .signup-container form input {
+    -webkit-appearance: none;
+    outline: 0;
+    border: 1px solid #6aa6d1;
+    width: 85%;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    transition-duration: 0.25s;
+    font-weight: 300;
+  }
+
+  .signup-container form input:hover {
+    background-color: #6aa6d1;
+    color:#FBD3E9;
+  }
+
+  .signup-container form input:focus {
+
+    background-color:#6aa6d1;
+    width: 300px;
+    color:#FBD3E9;
+
+  }
+
+
+  .signup-container form button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: 0;
+    background-color: #6aa6d1;
+    border: 0;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 3px;
+    font-size:20px;
+    width:85%;
+    cursor: pointer;
+    transition-duration: 0.25s;
+  }
+
+  .signup-container form button:hover {
+    border: 1px solid  #6aa6d1;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #6aa6d1;
+  }
+  
+  .signup-container form ::placeholder
+  {
+    color:#6aa6d1;
+  }
+
+
+  /* webcam component */
+
+
+
+  .signup-container .webcam-container
+  {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding:10px 0;
+  }
+
+  .signup-container .webcam-container .webcam-btn
+  {
+    margin-top: 10px;
+    width:50%;
+  }
+
+  /* end of webcam styles */
+
+  .signup-container form input:hover::placeholder
+  {
+    color:white;
+  }
+
+
+  .signup-container .loginLink
+  {
+    color:#6aa6d1;
+    padding:5px 10px;
+    font-weight: 700;
+    font-size: 18px;
+
+  }
+
+
+  @-webkit-keyframes square {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-700px) rotate(600deg);
+    }
+  }
+  @keyframes square {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-700px) rotate(600deg);
+    }
+  }
+
+  @media screen and (max-width:1200px) {
+
+    .signup-container .container
+    {
+      max-width: 90vw;
+    }
+    
+  }
+
+
+  @media screen and (max-width:900px)
+  {
+
+    .signup-container .container
+    {
+       max-width: 80vw;
+    }
+    .signup-container form
+    {
+      width:100%;
+    }
+    .signup-container .signupDesign
+    {
+      display: none;
+    }
+    .signup-container .container .signupText
+    {
+      width: 80%;
+      margin:0 auto;
+    }
+
+  }
+
+  @media screen and (max-width:800px)
+  {
+
+    .signup-container .webcam-container .webcam-btn
+    {
+      width: 60%;
+    }
+
+  }
