@@ -118,10 +118,14 @@ border:2px solid #BB377D;
 border-radius:10px;
 }
 
-
-.card-text
+.card-text h5
 {
-    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.card-text:not(h5)
+{
+    font-size: 1.1em;
 }
 
 .cardText
