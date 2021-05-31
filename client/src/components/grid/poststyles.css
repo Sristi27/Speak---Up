@@ -120,7 +120,8 @@ border-radius:10px;
 
 .card-text h5
 {
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .card-text:not(h5)
