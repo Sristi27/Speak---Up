@@ -2,20 +2,19 @@
     font-family: 'Josefin Sans', sans-serif;
     background-color: white;
     overflow: hidden;
-    color:#6aa6d1;
+    color:#BB377D;
     height: 100vh;
     padding:0;
   }
 
   .home .header-content{
-    margin-top:2%;
+    margin-top:1%;
     position: absolute;
     text-align: center;
     justify-content: center;
     display:flex;
     width: 100%;
     align-items: center;
-    padding:100px 0;
   }
   .home .header-content h1{
     text-transform: uppercase;
@@ -30,10 +29,10 @@
   .home .header-content button{
     width: 140px;
     margin:20px 10px;
-    color: #6aa6d1;
+    color: #BB377D;
     font-weight: bold;
     font-size: 17px;
-    border:1px solid #6aa6d1;
+    border:1px solid #BB377D;
     background: white;
     border-radius:15px;
     padding: 10px;
@@ -42,7 +41,7 @@
   }
   .home .header-content button:hover{
     border-radius: 0;
-    background-color:  #6aa6d1;
+    background-color:  #BB377D;
     color:white;
   }
 
@@ -50,7 +49,7 @@
   .home-title
   {
     text-align: center;
-    border: 4px dotted #6aa6d1;
+    border: 4px dotted #BB377D;
     padding:16px 30px;
     border-width:3px;
     font-weight: bolder;
@@ -74,7 +73,7 @@
 
   .home .carousel-caption button
   {
-      background-color: #6aa6d1;
+      background-color: #BB377D;
       border: 2px solid white;
       border-radius: 15px;
       padding: 10px 22px;
@@ -131,7 +130,7 @@
 
     .home .carousel-caption button
   {
-      background-color: #6aa6d1;
+      background-color: #BB377D;
       border: 2px solid white;
       border-radius: 15px;
       padding:5px 8px;

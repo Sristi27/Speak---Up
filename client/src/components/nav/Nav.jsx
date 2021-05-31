@@ -1,7 +1,7 @@
 import { Link,useHistory } from 'react-router-dom'
 import React, { useContext } from 'react'
 import { UserContext } from '../../App'
-import icon from './../../images/icon.png'
+import logo from './../../images/logo.png'
 import './navstyles.css'
 
 const Nav = () => {
@@ -12,10 +12,10 @@ const Nav = () => {
 
 
     return (
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top ">
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top">
 
         <a href="/" className="navbar-brand">
-            <img src={icon} height="60px" width="50px"/>
+            <img src={logo} height="60px" width="40px"/>
             <span style={{marginLeft:'10px',fontWeight:'bold',fontSize:'30px'}}>Speak Up</span>
         </a>
 
@@ -39,6 +39,21 @@ const Nav = () => {
           </ul>
 
           <ul class="navbar-nav my-2 my-lg-0">
+          <li className="nav-item">
+
+              <a className="nav-link" href="/contact">
+               Contact Us</a>
+
+                </li>
+                {/* <li className="nav-item">
+
+              <a className="nav-link" 
+              // href="https://github.com/Sristi27/BW-Hacks"
+              href=""
+              // target="_blank"
+              >
+              <i class="fa fa-github icon"></i></a>
+                </li> */}
           <li className="nav-item">
 
            <a className="nav-link" style={{color:'red'}}

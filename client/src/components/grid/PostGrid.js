@@ -150,7 +150,6 @@ const PostGrid = () => {
     //filter categories
     const filterPosts = (category) =>
     {
-      console.log(category)
         setFilter(category)
         if(category=="All")
         setAllPosts(tempPosts);

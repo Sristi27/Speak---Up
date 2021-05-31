@@ -17,7 +17,7 @@
     box-sizing: border-box;
     /* background-color: rgb(250, 193, 193); */
     background: #FBD3E9;  /* fallback for old browsers */
-    background: linear-gradient(to left, #d6f0f8, #64bbf8); 
+    background: linear-gradient(to left, #FBD3E9, #BB377D); 
     margin: 0;
     min-height: 100vh;
     padding: 70px 0;
@@ -40,7 +40,7 @@
 
   .login-container .container h1 {
     font-size: 40px;
-    color:#6aa6d1;
+    color:#BB377D;
     font-weight:600;
     animation: fadein 3s;
     margin-bottom: 40px;
@@ -56,7 +56,7 @@ to   { opacity: 1; }
   .login-container .container .loginDesign {
     width: 49%;
     padding-left: 0;
-   background:url('../../images/signinIcon.jpeg') no-repeat center center;
+   background:url('../../images/login.jpg') no-repeat center center;
   
    background-size: cover;
   }
@@ -79,7 +79,7 @@ to   { opacity: 1; }
        -moz-appearance: none;
             appearance: none;
     outline: 0;
-    border: 1px solid #6aa6d1;
+    border: 1px solid #BB377D;
     width: 85%;
     border-radius: 3px;
     padding: 10px 15px;
@@ -87,19 +87,19 @@ to   { opacity: 1; }
     display: block;
     text-align: center;
     font-size: 18px;
-    color: #6aa6d1;
+    color: #BB377D;
     transition-duration: 0.25s;
   }
 
 
   .login-container form input:hover {
-    background-color: #6aa6d1;
+    background-color: #BB377D;
     color:#FBD3E9;
   }
 
   .login-container form input:focus {
 
-    background-color:#6aa6d1;
+    background-color:#BB377D;
     width: 300px;
     color:#FBD3E9;
 
@@ -107,7 +107,7 @@ to   { opacity: 1; }
 
   .login-container form ::placeholder
   {
-    color:#6aa6d1;
+    color:#BB377D;
   }
 
 
@@ -121,7 +121,7 @@ to   { opacity: 1; }
        -moz-appearance: none;
             appearance: none;
     outline: 0;
-    background-color: #6aa6d1;
+    background-color: #BB377D;
     border: 0;
     padding: 10px 15px;
     color: #FBD3E9;
@@ -133,10 +133,10 @@ to   { opacity: 1; }
   }
 
   .login-container form button:hover {
-    border: 1px solid  #6aa6d1;
+    border: 1px solid  #BB377D;
     border-radius: 5px;
     background-color: #f5f7f9;
-    color: #6aa6d1;
+    color: #BB377D;
   }
   
   @-webkit-keyframes square {
@@ -158,7 +158,7 @@ to   { opacity: 1; }
 
   .login-container .linkdesign
   {
-    color:#6aa6d1;
+    color:#BB377D;
     padding:5px 10px;
     font-weight: 700;
     font-size: 18px;

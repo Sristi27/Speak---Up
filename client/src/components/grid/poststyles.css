@@ -17,7 +17,7 @@
 .homegrid button{
     margin-right:5px;
     color:white;
-    background-color:#6aa6d1;
+    background-color:#BB377D;
 }
 
 .homegrid .links
@@ -31,12 +31,12 @@
 
 
 .homegrid .links h3{
-    color:#6aa6d1;
+    color:#BB377D;
     margin-right:15px;
 }
 
 .homegrid label{
- background-color:#6aa6d1;
+ background-color:#BB377D;
  color: white;
  padding: 5px 10px;
 }
@@ -44,8 +44,8 @@
 
 
 .homegrid .links button{
-    color:#6aa6d1;
-    border:2px solid #6aa6d1;
+    color:#BB377D;
+    border:2px solid #BB377D;
     border-radius: 15px;
     padding:10px 30px;
     font-size: 20px;
@@ -55,8 +55,8 @@
 
 .homegrid .links button:hover
 {
-    background: linear-gradient(to left,#6aa6d1,#b2ebf3);
-    color:white
+    background: linear-gradient(to left,#9b155c,#fa9bce);
+    color:rgb(247, 230, 223)
 }
 
 
@@ -86,7 +86,7 @@
 
 .gridContainer .homegrid .filter .form-check label
 {
-    color:#0599d3;
+    color:#c51c76;
     background-color: transparent;
     padding: 0;
 }
@@ -95,7 +95,7 @@
 {
     margin-bottom:20%;
     font-size: 1.5em;
-    color:#6aa6d1;
+    color:#BB377D;
     font-weight: bolder;
 
 }
@@ -110,17 +110,18 @@
 
 
 .gridContainer .card-columns .card{
-margin-bottom: 12px;background-size:cover;
+margin-bottom: 12px;
+/* background:url('https://i.pinimg.com/originals/b2/69/08/b26908ab0a42478b85726e60ed5dd124.jpg') center; */
+background-size:cover;
 background-repeat:no-repeat;
-border:2px solid #6aa6d1;
+border:2px solid #BB377D;
 border-radius:10px;
 }
 
 
 .card-text
 {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1.4em;
 }
 
 .cardText
@@ -137,14 +138,10 @@ border-radius:10px;
 {
     padding:5px 10px;
     float:right;
-    border: 1px solid #6aa6d1;
+    border: 1px solid #BB377D;
     border-radius: 5px;
 }
 
-.card-text h5
-{
-    margin-bottom:15px;
-}
 
 .radiobtn
 {
@@ -152,10 +149,6 @@ border-radius:10px;
 }
 
 
-.card-title
-{
-    margin-bottom: 25px;
-}
 @media screen and (max-width:1000px){
 
 
@@ -201,13 +194,6 @@ border-radius:10px;
         padding-left: 10px;
 
     }
-
-    .gridContainer .card-columns .card{
-        width:100%;
-        }
-
-        
-
     .filter h6
     {
         margin:0 10px;
@@ -239,7 +225,7 @@ border-radius:10px;
 
     .gridContainer .homegrid .card-columns
     {
-        margin-top:18%; 
+        margin-top:18%;
 
     }
 
@@ -250,11 +236,7 @@ border-radius:10px;
     
     }
 
-    .gridContainer .card-columns .card{
-        width:100%;
-        }
-
-        
+       
 
     .gridContainer .homegrid .filter .form-check label
     {
@@ -275,11 +257,6 @@ border-radius:10px;
         margin-bottom: 20px;
         margin-right: 0;
     }
-    .gridContainer .card-columns .card{
-        width:100%;
-        }
-
-        
 }
 
 @media screen and (max-width:411px)
@@ -294,11 +271,6 @@ border-radius:10px;
         margin-top:35%;
 
     }
-    .gridContainer .card-columns .card{
-        width:100%;
-        }
-
-        
 }
 @media screen and (max-width:320px) {
 
@@ -308,11 +280,6 @@ border-radius:10px;
         margin-top:60%;
 
     }
-    .gridContainer .card-columns .card{
-        width:100%;
-        }
-
-        
 }
 
 @media screen and (max-width:250px) {
@@ -323,9 +290,4 @@ border-radius:10px;
         margin-top:80%;
 
     }
-    .gridContainer .card-columns .card{
-        width:100%;
-        }
-
-        
 }

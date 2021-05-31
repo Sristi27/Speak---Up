@@ -1,7 +1,12 @@
 import React, { useContext, useState } from 'react'
 import './signupstyles.css'
+import $ from 'jquery'
 import { useHistory } from 'react-router'
+import signupIcon from './../../images/signupIcon.png'
+import {UserContext} from '../../App'
 import { Link } from 'react-router-dom'
+// import {Camera} from '../camera'
+import { WebcamCapture } from '../Webcam/camera-feed'
 import Success from '../../Utils/Success'
 import Danger from '../../Utils/Danger'
 import Loader from '../../Utils/Loader'
@@ -14,16 +19,23 @@ const Signup = () => {
 
 
 
+    const [photo,setPhoto]=useState('');
+
+
+
     const history=useHistory();
 
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [name,setName]=useState('');
     const [url,setUrl]=useState('')
+    const [capturesuccess,setCaptureSuccess]=useState(false);
+    const [captureDanger,setCaptureDanger]=useState(false)
     const [signupSuccess,setSignupSucess]=useState(false);
     const [signupDanger,setSignupDanger] = useState(false);
     const [loading,setLoading]=useState(false)
 
+    const[photoUrl,setPhotoUrl]=useState('');
 
     const submitSignup =(e)=>
     {
@@ -33,6 +45,13 @@ const Signup = () => {
         setSignupSucess(false);
         e.preventDefault();
         
+        // if(!capturesuccess)
+        // {
+        //     alert("Retake Image");
+        //     setSignupDanger(true);
+        //     setLoading(false)
+        //     return;
+        // }
 
         if(email=='' || password=='' || name=='' || 
         !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()) )
@@ -44,6 +63,7 @@ const Signup = () => {
         }
 
 
+        // setUrl(URL.createObjectURL(photoUrl));
         fetch("/signup",
         {
             headers:
@@ -83,6 +103,72 @@ const Signup = () => {
         
     
 
+
+    const uploadImage = (photo) =>
+     {
+      
+
+        setLoading(true);
+        if(photo=='')
+        {
+            alert("Please capture your photo");
+            setCaptureSuccess(false);
+            return;
+        }
+
+        setPhotoUrl(photo);
+        const formData=new FormData();
+        formData.append('userImage',photo);
+
+        // console.log(photo)
+
+        fetch("/capture",
+        {
+            method:'POST',
+            body:formData
+        }).then(res=>res.json())
+        .then(async res=>
+        {
+
+            setLoading(false);
+            if(res.error)
+            {
+                alert("Human face not detected");
+                setCaptureDanger(false);
+                return;
+            }
+            var body=JSON.parse(res.message.body);
+            
+            if(body.count>1)
+            {
+                alert("Two faces detected");
+                setCaptureDanger(false);
+                return;
+            }
+            else
+            {
+                if(body.label=='man')
+                {
+                    alert('Male detected');
+                    setCaptureDanger(false);
+                    return;
+                }
+
+                else if(body.label=='woman')
+                {
+                    setCaptureSuccess(true);
+                    alert('Woman detected!Picture upload successfull.\
+                    Please fill out the remaining form')
+                }
+            }
+
+        }).catch(error=>
+            {
+                setLoading(false);
+                alert(error)
+            })
+    }
+
     return (
         <div className="signup-container">
         {signupSuccess?
@@ -96,10 +182,13 @@ const Signup = () => {
             
                 <div className="signupText">
                 {loading?<Loader/>:''}
-                <h1>Welcome to Speak UP!</h1>
+                <h1>Welcome to Speak UP!<span className="icon">
+                    <img src={signupIcon} width="50px" 
+                height="40px"/></span></h1>
             <form className="form">
 
 
+        {/* <WebcamCapture uploadImage={uploadImage}/> */}
 
                 <input type="text" placeholder="Name" 
                 onChange={(e)=>setName(e.target.value)}/>

@@ -7,6 +7,7 @@ import Signin from './components/signin/Signin';
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initialState, reducer } from './reducer';
 import Signup from './components/signup/Signup';
+import Contact from './components/Contact/Contact';
 import newUser from './components/newUser/newUser';
 
 
@@ -41,6 +42,7 @@ const Routing = () =>
     <Route path="/grid" component={PostGrid}/>
     <Route path="/signup" component={Signup}/>
     <Route path="/signin" component={Signin}/>
+    <Route path="/contact" component={Contact}/>
     <Route path="/newUser" component={newUser}/>
   </Switch>
   )

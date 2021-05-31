@@ -1,0 +1,86 @@
+.contactDiv
+{
+    display: flex;
+    max-height: 80vh;
+    color:#BB377D;
+    top:50%;
+    left: 40%;
+    position:absolute;
+    transform: translate(-40%,-50%);
+    align-items: center;
+}
+
+
+.contactDiv img{
+    height:450px;
+    width:450px;
+}
+
+
+.contactDiv .h3-title
+{
+    padding-bottom: 6px;
+    border-bottom:6px dotted #BB377D;
+
+}
+
+.contactDiv .content
+{
+    height:100%;
+    width:50%;
+    text-align: center;
+}
+.contactDiv .content-para
+{
+    margin-top:13%;
+    font-size: 21.5px;
+}
+.contactDiv i{
+    color:black
+}
+
+.contactDiv ul{
+    display: flex;
+    justify-content: space-evenly;
+}
+.contactDiv ul li{
+    list-style: none;
+    cursor: pointer;
+}
+
+.mail
+{
+    font-weight: bolder;
+    text-decoration: underline;
+    cursor: pointer;
+    color:#BB377D;
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+.social a,.social i
+{
+    color:#BB377D;
+}
+
+.social i{
+    font-size:25px;
+}
+
+.mail:hover,.contactDiv li a:hover,
+.social li a:hover i:hover
+{
+    color:rgb(62, 96, 247)
+}
+@media screen and (max-width:768px)
+{
+    .contactDiv .content
+    {
+        width: 100%;
+    }
+
+    .contactDiv img
+    {
+        display: none;
+    }
+}

@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
 import './loginstyles.css'
+import $ from 'jquery'
 import { useHistory } from 'react-router'
+import signupIcon from './../../images/signupIcon.png'
 import {UserContext} from '../../App'
 import { Link } from 'react-router-dom'
 
@@ -62,7 +64,9 @@ const Signin = () => {
             
             <div className="container">
            <div className="loginText">
-           <h1>Welcome back<br></br>To Speak UP!</h1>
+           <h1>Welcome back<br></br>To Speak UP!<span className="icon">
+                    <img src={signupIcon} width="50px" 
+                height="40px"/></span></h1>
          
        {/* <Link to="/add">Add</Link> */}
            
