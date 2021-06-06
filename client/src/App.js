@@ -9,6 +9,7 @@ import { initialState, reducer } from './reducer';
 import Signup from './components/signup/Signup';
 import Contact from './components/Contact/Contact';
 import newUser from './components/newUser/newUser';
+import Stat from './components/Stats/Stat';
 
 
 export const UserContext=createContext();
@@ -44,6 +45,7 @@ const Routing = () =>
     <Route path="/signin" component={Signin}/>
     <Route path="/contact" component={Contact}/>
     <Route path="/newUser" component={newUser}/>
+    <Route path="/stats" component={Stat}/>
   </Switch>
   )
 }

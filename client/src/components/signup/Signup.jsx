@@ -64,7 +64,7 @@ const Signup = () => {
 
 
         // setUrl(URL.createObjectURL(photoUrl));
-        fetch("/signup",
+        fetch("http://localhost:8000/signup",
         {
             headers:
             {
@@ -105,69 +105,92 @@ const Signup = () => {
 
 
     const uploadImage = (photo) =>
-     {
-      
-
-        setLoading(true);
-        if(photo=='')
-        {
-            alert("Please capture your photo");
-            setCaptureSuccess(false);
-            return;
-        }
-
-        setPhotoUrl(photo);
-        const formData=new FormData();
-        formData.append('userImage',photo);
-
-        // console.log(photo)
-
-        fetch("/capture",
-        {
-            method:'POST',
-            body:formData
-        }).then(res=>res.json())
-        .then(async res=>
-        {
-
-            setLoading(false);
-            if(res.error)
-            {
-                alert("Human face not detected");
-                setCaptureDanger(false);
-                return;
-            }
-            var body=JSON.parse(res.message.body);
-            
-            if(body.count>1)
-            {
-                alert("Two faces detected");
-                setCaptureDanger(false);
-                return;
-            }
-            else
-            {
-                if(body.label=='man')
                 {
-                    alert('Male detected');
-                    setCaptureDanger(false);
-                    return;
-                }
-
-                else if(body.label=='woman')
-                {
-                    setCaptureSuccess(true);
-                    alert('Woman detected!Picture upload successfull.\
-                    Please fill out the remaining form')
-                }
-            }
-
-        }).catch(error=>
-            {
-                setLoading(false);
-                alert(error)
-            })
-    }
+                 
+           
+                   setLoading(true);
+                   if(photo=='')
+                   {
+                       alert("Please capture your photo");
+                       setCaptureSuccess(false);
+                       return;
+                   }
+           
+                   setPhotoUrl(photo);
+                   const formData=new FormData();
+                   formData.append('file',photo);
+                   formData.append('upload_preset','speak-up');
+                   formData.append('cloud_name','ducw5cejx');
+           
+           
+                   // console.log(photo)
+           
+                 
+           
+                  fetch("https://api.cloudinary.com/v1_1/ducw5cejx/image/upload",
+                  {
+                       method:'post',
+                       body:formData
+                   })
+                   .then(res=>res.json())
+                   .then(res=>
+                       {
+                           
+                   fetch("http://localhost:8000/capture",
+                           {
+                               headers:
+                               {
+                                   'Content-Type':'application/json'
+                               },
+                               method:'POST',
+                               body:JSON.stringify({url:res.url})
+                               // body:formData
+                           }).then(res=>res.json())
+                           .then(async res=>
+                           {
+                   
+                               setLoading(false);
+                               if(res.error)
+                               {
+                                   alert("Human face not detected");
+                                   setCaptureDanger(false);
+                                   return;
+                               }
+                               var body=JSON.parse(res.message.body);
+                               
+                               if(body.count>1)
+                               {
+                                   alert("Two faces detected");
+                                   setCaptureDanger(false);
+                                   return;
+                               }
+                               else
+                               {
+                                   if(body.label=='man')
+                                   {
+                                       alert('Male detected');
+                                       setCaptureDanger(false);
+                                       return;
+                                   }
+                   
+                                   else if(body.label=='woman')
+                                   {
+                                       setCaptureSuccess(true);
+                                       alert('Woman detected!Picture upload successfull.Please fill out the remaining form')
+                                   }
+                               }
+                   
+                           }).catch(error=>
+                               {
+                                   setLoading(false);
+                                   alert(error)
+                               })
+                           
+                       })
+                   .catch(err=>console.log(err))
+           
+                   
+               }
 
     return (
         <div className="signup-container">
@@ -188,7 +211,7 @@ const Signup = () => {
             <form className="form">
 
 
-        {/* <WebcamCapture uploadImage={uploadImage}/> */}
+        <WebcamCapture uploadImage={uploadImage}/>
 
                 <input type="text" placeholder="Name" 
                 onChange={(e)=>setName(e.target.value)}/>

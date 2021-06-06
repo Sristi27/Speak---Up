@@ -31,7 +31,7 @@ const PostGrid = () => {
     useEffect(
       async()=>
       {
-      await fetch("/allPosts",
+      await fetch("http://localhost:8000/allPosts",
       {
         headers:
         {
@@ -51,10 +51,15 @@ const PostGrid = () => {
     },[]);
 
 
+
+    //when i am liking a posts i have to add it to my user sentiment part with \
+    //which post I m liking and what is its sentiment
+    //how to do - find by the req.user._id and update its liked content
+
     const increment = async(id) =>
     {
         
-        await fetch("/like",
+        await fetch("http://localhost:8000/like",
            {
              method:"put",
              headers: 
@@ -86,7 +91,7 @@ const PostGrid = () => {
     const decrement = async(id) =>
     {
         
-        await fetch("/unlike",
+        await fetch("http://localhost:8000/unlike",
            {
              method:"put",
              headers: 
@@ -122,7 +127,7 @@ const PostGrid = () => {
       setDanger(false)
        console.log(tempPosts)
        console.log(id)
-        await fetch(`/deletePost/${id}`,
+        await fetch(`http://localhost:8000/deletePost/${id}`,
         {
           method:'delete',
           header:
@@ -198,7 +203,7 @@ const PostGrid = () => {
                        <div className="card-text">
 
                        <h5 class="text-secondary">How to overcome the situation?</h5>
-                         {post.body.body}
+                         {post.body.overcome}
                          </div>
 
                        <div className="card-text">
@@ -252,12 +257,6 @@ const PostGrid = () => {
 <>
         <Nav/>
 
-        {success?
-         <Success msg=
-           {"Post has been deleted successfully!"}/>:''}
-          {danger?
-          <Danger msg=
-          {"Post could not be deleted!"}/>:''}
          
          <div className="homegrid">
          
@@ -319,27 +318,34 @@ const PostGrid = () => {
              </div>
              </div>
 
-          <div class="card-columns">
-           
-           {allposts!='' && allposts.map((post)=>
-           {
-             return(
-                <PostCard post={post} key={post._id}/>
-             )
-           })}
-              {allposts==''?<div className="links">
-                <h3>No new posts here</h3>
-              <Link to="/add"><button>
-                Create Post</button></Link>
-              </div>:''}
-       </div>
-            
-            
+        <div className="postSection">
+
+        <div className="alert">
+            {success?<Success msg={"Post has been deleted successfully!"}/>:''}
+            {danger? <Danger msg={"Post could not be deleted!"}/>:''}
+        </div>
+
+        <div class="card-columns">
+                
+                {allposts!='' && allposts.map((post)=>
+                {
+                  return(
+                      <PostCard post={post} key={post._id}/>
+                  )
+                })}
+                    {allposts==''?<div className="links">
+                      <h3>No new posts here</h3>
+                    <Link to="/add"><button>
+                      Create Post</button></Link>
+                    </div>:''}
           </div>
-          </>}
-            <Footer/>
-            </div>
-    )
+          </div>
+          </div>
+        </>}
+      <Footer/>
+    </div>
+    
+  )
 }
 
 export default PostGrid

@@ -8,24 +8,18 @@ const Post = mongoose.model("Post");
 router.post("/addPost",beforelogin,(req,res)=>
 {
 
-    const {title,body,sector,issues,advice}=req.body;
-    if(!title || !body)
-    {
-        return res.status(400).json({message:"Please add all the fields!"});
-    }
-
+    const {title,overcome,sector,issues,advice,sentiment}=req.body;
     const post = new Post(
         {
             body:
             {
-                title,body,advice,issues,sector
+                title,overcome,advice,issues,sector,sentiment
             },
             postedBy:req.user,
             
 
         }
-    ).save()
-    .then(result=>
+    ).save().then(result=>
         {
             return res.status(200).json({message:"Post added successfully!",post:result})
         }

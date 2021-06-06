@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-
+const { ObjectId } = mongoose.Schema.Types
 const authSchema =  new mongoose.Schema
 (
     {
@@ -21,6 +21,29 @@ const authSchema =  new mongoose.Schema
             image:
             {
                 type:String
+            },
+            likedPosts: //array of posts liked
+            [{
+                    postId:
+                    {
+                        type:ObjectId, //id of the post which has been liked
+                    },
+                    sentiment:
+                    {
+                        type:Number //sentiment of that post which has been liked
+                    }
+                    
+            }],
+            sentimentsLiked:
+            {
+                positive:
+                {
+                    type:Number
+                },
+                negative:
+                {
+                    type:Number
+                }
             }
     }
 )

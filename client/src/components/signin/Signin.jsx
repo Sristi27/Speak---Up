@@ -29,7 +29,7 @@ const Signin = () => {
         }
 
         e.preventDefault();
-        fetch("/signin",
+        fetch("http://localhost:8000/signin",
         {
             headers:
             {

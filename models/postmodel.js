@@ -10,7 +10,7 @@ const postSchema = new mongoose.Schema(
 					type:String,
 					required:true
 				}
-			,body:
+			,overcome:
 				{
 					type:String,
 					required:true
@@ -31,7 +31,13 @@ const postSchema = new mongoose.Schema(
 				 {
 					 type:String,
 					 required:true
-				 }
+				 },
+			sentiment:
+				{
+
+					type:Number,
+					required:true
+				}
 			
 		},
 		

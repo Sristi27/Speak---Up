@@ -100,12 +100,20 @@
 
 }
 
-
-.gridContainer .homegrid .card-columns
+.gridContainer .postSection
 {
     width:80%;
     margin-left:18%;
-    padding:20px 10px 0 20px;
+    padding:0 10px 0 10px;
+    display:flex;
+    flex-direction: column;
+}
+
+.gridContainer .homegrid .card-columns
+{
+    width:100%;
+    padding-top: 0;
+    padding-left: 10px;
 }
 
 

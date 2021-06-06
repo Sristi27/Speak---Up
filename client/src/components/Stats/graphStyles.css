@@ -1,0 +1,30 @@
+/* .graph-container
+{
+    width:50%;
+    height:30%;
+    margin:0 auto;
+} */
+
+.stat-container
+{
+    width: 100%;
+}
+
+
+.graphs
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.graphs .graph1
+{
+    width:30%;
+}
+
+.graphs h3{
+    text-align: center!important;
+    font-weight: light;
+    margin:20px 0;
+}
