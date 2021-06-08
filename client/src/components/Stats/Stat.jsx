@@ -13,7 +13,7 @@ const [sentimentState,setSentimentState]=useState({})
 useEffect(
         async()=>
         {
-            await fetch("http://localhost:8000/allPosts",
+            await fetch("/allPosts",
             {
             headers:
             {

@@ -64,7 +64,7 @@ const Signup = () => {
 
 
         // setUrl(URL.createObjectURL(photoUrl));
-        fetch("http://localhost:8000/signup",
+        fetch("/signup",
         {
             headers:
             {
@@ -136,7 +136,7 @@ const Signup = () => {
                    .then(res=>
                        {
                            
-                   fetch("http://localhost:8000/capture",
+                   fetch("/capture",
                            {
                                headers:
                                {

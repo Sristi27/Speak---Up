@@ -31,7 +31,7 @@ const PostGrid = () => {
     useEffect(
       async()=>
       {
-      await fetch("http://localhost:8000/allPosts",
+      await fetch("/allPosts",
       {
         headers:
         {
@@ -59,7 +59,7 @@ const PostGrid = () => {
     const increment = async(id) =>
     {
         
-        await fetch("http://localhost:8000/like",
+        await fetch("/like",
            {
              method:"put",
              headers: 
@@ -91,7 +91,7 @@ const PostGrid = () => {
     const decrement = async(id) =>
     {
         
-        await fetch("http://localhost:8000/unlike",
+        await fetch("/unlike",
            {
              method:"put",
              headers: 
@@ -127,7 +127,7 @@ const PostGrid = () => {
       setDanger(false)
        console.log(tempPosts)
        console.log(id)
-        await fetch(`http://localhost:8000/deletePost/${id}`,
+        await fetch(`/deletePost/${id}`,
         {
           method:'delete',
           header:
