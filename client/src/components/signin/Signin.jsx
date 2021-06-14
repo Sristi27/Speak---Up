@@ -52,7 +52,7 @@ const Signin = () => {
 
         
         e.preventDefault();
-        fetch("http://localhost:5000/signin",
+        fetch("/signin",
         {
             headers:
             {

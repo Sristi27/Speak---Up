@@ -3,6 +3,7 @@ const mongoose=require('mongoose');
 const beforelogin = require('../beforelogin');
 
 const router=express.Router();
+const User=mongoose.model("User")
 const Post = mongoose.model("Post");
 
 router.post("/addPost",beforelogin,(req,res)=>
@@ -45,20 +46,18 @@ router.get("/allPosts",beforelogin,(req,res)=>
 
 router.put('/like',beforelogin,async(req,res)=>{
     
-    const post =  await Post.findByIdAndUpdate(req.body.post_id,
+    await Post.findByIdAndUpdate(req.body.post_id,
         {
             $push:{likes:req.user._id}
         })
 
-    const post=await Post.findById(req.body.post_id);
-    const sentiment=post.sentiment;
-    console.log(req.user)
-    // const user = await Post.findByIdAndUpdate(req.user,
+    // const post=await Post.findById(req.body.post_id);
+    // const sentiment=post.body.sentiment;
+    // console.log(sentiment)
+    // console.log(req.user)
+    // await User.findByIdAndUpdate(req.user._id,
     //     {
-    //         $set:
-    //         {
-                
-    //         }
+    //         $inc:{"user.sentimentsLiked.positive":sentiment}
     //     })
         
         Post.find().then(result=>
@@ -69,7 +68,7 @@ router.put('/like',beforelogin,async(req,res)=>{
                     return res.status(404).json({message:"Posts not found!"})
                 })
 
-        await User.findByIdAndUpdate(req.body)
+        // await User.findByIdAndUpdate(req.body)
 })
 
 

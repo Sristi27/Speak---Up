@@ -22,17 +22,17 @@ const authSchema =  new mongoose.Schema
             {
                 type:String
             },
-            sentimentsLiked:
-            {
-                positive:
-                {
-                    type:Number
-                },
-                negative:
-                {
-                    type:Number
-                }
-            }
+            // sentimentsLiked:
+            // {
+            //     positive:
+            //     {
+            //         type:Number
+            //     },
+            //     negative:
+            //     {
+            //         type:Number
+            //     }
+            // }
     }
 )
 

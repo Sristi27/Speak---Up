@@ -124,20 +124,6 @@ useEffect(
             <h3>Blogs per Sector</h3>
             
             <div className="count">
-            {/* <Bar
-                data={state}
-                options={{
-                title:{
-                    display:true,
-                    text:'Average Rainfall per month',
-                    fontSize:20
-                },
-                legend:{
-                    display:true,
-                    position:'right'
-                }
-                }}
-            /> */}
 
         {
             countState!={}?
