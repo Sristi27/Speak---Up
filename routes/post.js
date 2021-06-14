@@ -16,8 +16,6 @@ router.post("/addPost",beforelogin,(req,res)=>
                 title,overcome,advice,issues,sector,sentiment
             },
             postedBy:req.user,
-            
-
         }
     ).save().then(result=>
         {
@@ -51,6 +49,17 @@ router.put('/like',beforelogin,async(req,res)=>{
         {
             $push:{likes:req.user._id}
         })
+
+    const post=await Post.findById(req.body.post_id);
+    const sentiment=post.sentiment;
+    console.log(req.user)
+    // const user = await Post.findByIdAndUpdate(req.user,
+    //     {
+    //         $set:
+    //         {
+                
+    //         }
+    //     })
         
         Post.find().then(result=>
         {
@@ -60,6 +69,7 @@ router.put('/like',beforelogin,async(req,res)=>{
                     return res.status(404).json({message:"Posts not found!"})
                 })
 
+        await User.findByIdAndUpdate(req.body)
 })
 
 

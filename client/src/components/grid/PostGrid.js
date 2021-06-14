@@ -31,7 +31,7 @@ const PostGrid = () => {
     useEffect(
       async()=>
       {
-      await fetch("/allPosts",
+      await fetch("http://localhost:5000/allPosts",
       {
         headers:
         {
@@ -42,14 +42,24 @@ const PostGrid = () => {
         
       })
       .then(res=>res.json())
-      .then(res=>
+      .then(async res=>
         {
           setAllPosts(res.posts);
-          setTempPosts(res.posts);
+          var ans=await sortPosts(res.posts);
+          console.log(ans);
+          setAllPosts(ans);
+          setTempPosts(ans);
         })
       .catch(err=>alert(err))
     },[]);
 
+
+    const sortPosts = (posts) =>
+    {
+       
+       posts.sort(function(a, b){return b.body.sentiment - a.body.sentiment});
+       return posts;
+    }
 
 
     //when i am liking a posts i have to add it to my user sentiment part with \
@@ -59,7 +69,7 @@ const PostGrid = () => {
     const increment = async(id) =>
     {
         
-        await fetch("/like",
+        await fetch("http://localhost:5000/like",
            {
              method:"put",
              headers: 
@@ -91,7 +101,7 @@ const PostGrid = () => {
     const decrement = async(id) =>
     {
         
-        await fetch("/unlike",
+        await fetch("http://localhost:5000/unlike",
            {
              method:"put",
              headers: 
@@ -127,7 +137,7 @@ const PostGrid = () => {
       setDanger(false)
        console.log(tempPosts)
        console.log(id)
-        await fetch(`/deletePost/${id}`,
+        await fetch(`http://localhost:5000/deletePost/${id}`,
         {
           method:'delete',
           header:
@@ -253,7 +263,7 @@ const PostGrid = () => {
 <div className="gridContainer">
   
 {!allposts && !tempPosts ? 
-<Loader/>:
+<Loader msg="Loading"/>:
 <>
         <Nav/>
 

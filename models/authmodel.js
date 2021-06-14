@@ -22,18 +22,6 @@ const authSchema =  new mongoose.Schema
             {
                 type:String
             },
-            likedPosts: //array of posts liked
-            [{
-                    postId:
-                    {
-                        type:ObjectId, //id of the post which has been liked
-                    },
-                    sentiment:
-                    {
-                        type:Number //sentiment of that post which has been liked
-                    }
-                    
-            }],
             sentimentsLiked:
             {
                 positive:

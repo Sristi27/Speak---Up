@@ -58,7 +58,7 @@ const Add = () => {
           .then(res=>
             {
               sentiment=res.data.sentiment.overall;
-              fetch("/addPost",
+              fetch("http://localhost:5000/addPost",
                   {
                     headers:
                     {
@@ -103,11 +103,11 @@ const Add = () => {
     return (
       
       <div className="add-container">
-      {loading?<Loader/>:''}
+      {loading?<Loader msg="Posting"/>:''}
       <Nav/>
 
           {success?<Success msg=
-          {"Congrats!Post successfully added,view the"} 
+          {"Congrats!Post successfully added,"} 
           navigate={"posts"} />:''}
           {danger ? <Danger msg={"Alas!Could not add Post,\
           please try again!"}/>:''}

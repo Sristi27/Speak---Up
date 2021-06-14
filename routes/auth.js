@@ -18,7 +18,7 @@ router.post("/signup",(req,res)=>
 
 {
 
-    const {email,name,password,sector} = req.body;
+    const {email,name,password} = req.body;
     if(!email || !password || !name)
     {
         return res.status(404).json({error:"Please fill all the fields!"});
@@ -46,7 +46,12 @@ router.post("/signup",(req,res)=>
                             {
                                 email,
                                 password:hashedPassword,
-                                name
+                                name,
+                                sentimentsLiked:
+                                {
+                                    positive:0,
+                                    negative:0
+                                }
                             })
                     }
                     else

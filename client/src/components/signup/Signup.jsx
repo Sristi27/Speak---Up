@@ -31,40 +31,46 @@ const Signup = () => {
     const [url,setUrl]=useState('')
     const [capturesuccess,setCaptureSuccess]=useState(false);
     const [captureDanger,setCaptureDanger]=useState(false)
-    const [signupSuccess,setSignupSucess]=useState(false);
-    const [signupDanger,setSignupDanger] = useState(false);
-    const [loading,setLoading]=useState(false)
-
+    const [success,setSuccess]=useState(
+        {
+            status:false,
+            text:''
+        }
+    );
+    const [danger,setDanger] = useState(
+        {
+            status:false,
+            text:''
+        }
+    );
+    const [loading,setLoading]=useState(
+        {
+            status:false,
+            text:''
+        }
+    )
     const[photoUrl,setPhotoUrl]=useState('');
 
     const submitSignup =(e)=>
     {
 
-        setLoading(true)
-        setSignupDanger(false);
-        setSignupSucess(false);
+        setLoading({...loading,status:true,text:"Signing up"})
+        setDanger({...danger,status:false});
+        setSuccess({...success,status:false});
         e.preventDefault();
         
-        // if(!capturesuccess)
-        // {
-        //     alert("Retake Image");
-        //     setSignupDanger(true);
-        //     setLoading(false)
-        //     return;
-        // }
-
+        
         if(email=='' || password=='' || name=='' || 
         !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()) )
         {
-            alert("Please fill all the fields correctly!")
-            setSignupDanger(true);
-            setLoading(false);
+            setDanger({...danger,status:false,text:"Please fill all the fields correctly!"});
+            setLoading({...loading,status:false,text:""})
             return;
         }
 
 
         // setUrl(URL.createObjectURL(photoUrl));
-        fetch("/signup",
+        fetch("http://localhost:5000/signup",
         {
             headers:
             {
@@ -75,23 +81,22 @@ const Signup = () => {
             }).then(res=>res.json())
                 .then(res=>
                         {
+                            setLoading({...success,status:false,text:''});
                                 if(!res.error)
                                 {
 
-                                    setSignupSucess(true)
-                                    setLoading(false);
-                                }
+                                    setSuccess({...success,status:true,text:'Signup Successfull!'});
+                                  }
                                 else
                                 {
                                     alert(res.error)
-                                    setSignupDanger(true)
-                                    setLoading(false);
-                                    return;
+                                    setDanger({...danger,text:"Signup unsuccessfull.Please try again!",status:true})
+                                     return;
                                 }
 
                         })
                     .catch(err=>{
-                        setSignupDanger(true);
+                        setDanger({...danger,status:true,text:err});
                         alert(err)
                     })
                 
@@ -108,13 +113,15 @@ const Signup = () => {
                 {
                  
            
-                   setLoading(true);
                    if(photo=='')
                    {
-                       alert("Please capture your photo");
+                       setDanger({...danger,status:true,text:"Please capture your photo"});
                        setCaptureSuccess(false);
                        return;
                    }
+
+
+                   setLoading({...loading,status:false,text:'Capturing Image'});
            
                    setPhotoUrl(photo);
                    const formData=new FormData();
@@ -136,7 +143,7 @@ const Signup = () => {
                    .then(res=>
                        {
                            
-                   fetch("/capture",
+                   fetch("http://localhost:5000/capture",
                            {
                                headers:
                                {
@@ -149,7 +156,7 @@ const Signup = () => {
                            .then(async res=>
                            {
                    
-                               setLoading(false);
+                               setLoading({...loading,text:"",satus:false});
                                if(res.error)
                                {
                                    alert("Human face not detected");
@@ -182,7 +189,7 @@ const Signup = () => {
                    
                            }).catch(error=>
                                {
-                                   setLoading(false);
+                                   setLoading({...loading,status:false,text:''});
                                    alert(error)
                                })
                            
@@ -194,24 +201,24 @@ const Signup = () => {
 
     return (
         <div className="signup-container">
-        {signupSuccess?
-        <Success msg={"Signup successfull"} 
-        navigate ={"login"}/>:''}
-        {signupDanger?
-        <Danger msg={"Signup unsuccessfull.Please try again!"}/>:''}
+        {success.status?
+        <Success msg={success.text} 
+        navigate ={"login"}/>:<></>}
+        {danger.status?
+        <Danger msg={danger.text}/>:<></>}
 
             <div className="container">
             <div className="signupDesign"></div>
             
                 <div className="signupText">
-                {loading?<Loader/>:''}
+                {loading.status?<Loader msg={loading.text}/>:<></>}
                 <h1>Welcome to Speak UP!<span className="icon">
                     <img src={signupIcon} width="50px" 
                 height="40px"/></span></h1>
             <form className="form">
 
 
-        <WebcamCapture uploadImage={uploadImage}/>
+        {/* <WebcamCapture uploadImage={uploadImage}/> */}
 
                 <input type="text" placeholder="Name" 
                 onChange={(e)=>setName(e.target.value)}/>

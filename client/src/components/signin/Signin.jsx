@@ -5,6 +5,8 @@ import { useHistory } from 'react-router'
 import signupIcon from './../../images/signupIcon.png'
 import {UserContext} from '../../App'
 import { Link } from 'react-router-dom'
+import Danger from '../../Utils/Danger'
+import Loader from '../../Utils/Loader'
 
 
 const Signin = () => {
@@ -18,18 +20,39 @@ const Signin = () => {
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
 
+    const [danger,setDanger]=useState(
+        {
+            status:false,
+            text:''
+        }
+    );
+    const [success,setSuccess]=useState(
+        {
+            status:false,
+            text:''
+        }
+    );
+    const [loading,setLoading]=useState(
+        {
+            text:'',
+            status:false
+        });
 
     const submitLogin =(e)=>
     {
+        setLoading({...loading,status:true,text:"Signing in..."});
+        setDanger({...danger,status:false,text:''});
+        setSuccess({...success,status:false,text:''})
 
         if(email=='' || password=='' || !/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(String(email).toLowerCase()) )
         {
-            alert("Please fill all the fields correctly!")
+            setDanger({...danger,status:true,text:"Please fill all the fields correctly!"})
             return;
         }
 
+        
         e.preventDefault();
-        fetch("/signin",
+        fetch("http://localhost:5000/signin",
         {
             headers:
             {
@@ -41,29 +64,33 @@ const Signin = () => {
         .then(res=>
             {
                     // console.log(res)
+                    setLoading({...loading,status:false,text:''})
                     if(!res.error)
                     {
                         localStorage.setItem("jwt",res.token);
-                        //data.user was an object
                         localStorage.setItem("user",JSON.stringify(res.user))
                         dispatch({type:"USER",payload:res.user})
-                        // console.log(res)
+                        alert("Signin successfull!")
                         history.push("/")
                     }
                     else
                     {
-                         alert(res.error)
+                         setDanger({...danger,status:true,text:res.error})
                          return;
                     }
             })
-        .catch(err=>alert(err))
+        .catch(err=>
+            {
+                setDanger({...danger,status:true,text:err})
+            })
     }
 
     return (
         <div className="login-container">
-            
+            {danger.status?<Danger msg={danger.text}/>:<></>}
             <div className="container">
            <div className="loginText">
+            {loading.status?<Loader msg={loading.text}/>:<></>}
            <h1>Welcome back<br></br>To Speak UP!<span className="icon">
                     <img src={signupIcon} width="50px" 
                 height="40px"/></span></h1>
