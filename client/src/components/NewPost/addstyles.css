@@ -22,7 +22,7 @@
 .add-container .container
 {
     display: flex;
-    min-height: 120vh;
+    min-height: 130vh;
     flex-direction: row;
     padding:28px 0;
 }
