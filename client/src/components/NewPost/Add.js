@@ -63,7 +63,7 @@ const Add = () => {
           .then(res=>
             {
               sentiment=res.data.sentiment.overall;
-              fetch("http://localhost:5000/addPost",
+              fetch("/addPost",
                   {
                     headers:
                     {
