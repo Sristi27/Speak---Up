@@ -41,7 +41,7 @@ Speakup is a platform for women to talk about their personal problems, the issue
 
 Physical issues like several cancers like **breast cancer and cervical cancer needs to be spoken of**. People who have suffered from it must given an opportunity to come out with their story so that **the next generation of women can safely tackle it**.
 
-Financial : Women face discriminatio while applying to job posts. Here women can choose to write anonymously about their experience as well so that the world can know about the different issues women in the corporate world face.
+Financial : Women **face discrimination** while applying to job posts. Here women can choose to write anonymously about their experience as well so that the world can know about the **different issues** women face in the corporate world face.
 
 ## How we built it
 
@@ -50,6 +50,7 @@ Technologies used:
 ~ MongoDB Atlas as database support
 ~ React for Client Side Code
 ~ Gender Detection API hosted with heroku
+~ Expert NLP for Sentiment Analysis
 
 
 ## What's next for Speak-Up women
