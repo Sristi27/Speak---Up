@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect,useState } from 'react'
 import './addstyles.css';
 import Nav from '../nav/Nav';
 import Footer from '../Footer/Footer';
@@ -9,8 +9,13 @@ import Loader from '../../Utils/Loader';
 const Add = () => {
 
 
+    const [token,setToken]=useState();
     //handle innputs
-    var token="Bearer"+" "+"eyJraWQiOiI1RDVOdFM1UHJBajVlSlVOK1RraXVEZE15WWVMMFJQZ3RaUDJGTlhESHpzPSIsImFsZyI6IlJTMjU2In0.eyJjdXN0b206Y291bnRyeSI6IklOIiwic3ViIjoiYmNkNTY2OTItMjNkZS00YjRmLWI4NjctY2Y3YWVmMmE2ZWU5IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImN1c3RvbTpwZXJzb25hbGl6YXRpb25BdXRoIjoiMSIsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC5ldS13ZXN0LTEuYW1hem9uYXdzLmNvbVwvZXUtd2VzdC0xX0FVSGdRMDhDQiIsInBob25lX251bWJlcl92ZXJpZmllZCI6ZmFsc2UsImNvZ25pdG86dXNlcm5hbWUiOiJiY2Q1NjY5Mi0yM2RlLTRiNGYtYjg2Ny1jZjdhZWYyYTZlZTkiLCJjdXN0b206Y29tcGFueSI6IktHRUMiLCJhdWQiOiIxZWdzNjNxOTlwM3NlYmVjaHNiNzI5dDgwbyIsImV2ZW50X2lkIjoiMGVlNjA4N2EtYTk1Mi00OWU3LWJkYmEtMWEyYTdmZWEyYzIwIiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2MjQwMzMyMjUsIm5hbWUiOiJTUklTVEkiLCJwaG9uZV9udW1iZXIiOiIrOTE2MjkxNDg4ODQxIiwiZXhwIjoxNjI0MTE5NjI1LCJpYXQiOjE2MjQwMzMyMjUsImZhbWlseV9uYW1lIjoiQ0hPV0RIVVJZIiwiZW1haWwiOiJzcmlzdGkyNzA1QGdtYWlsLmNvbSIsImN1c3RvbTptYXJrZXRpbmdBdXRoIjoiMSJ9.ITKLb79cSeWB0SPozid5NAfNwIndkVcYwOmoVTG2QSL_i3xPvMUGxKvWgaD0ssQhfVkdQOPmDYZ-g3527_7eNzCKWWZER0MsqpMT-xGtPPuZzVi7zRABRJZuBcVbr0QtPjtTMPTj8lw1RRzSCKmiRVewbZQkI0RViLYs0k_TUH1UKRR6ur7YmPQI6Z6equVvcKVHyfYxM7yml6OeBO3Mb1X2AscC5tBY4-69SVa9S1cvue1Xt4-S4R4DuUVJRtPiL5Dj62fHw5Yo7q6ztd9AVC8h-APo2IP6yLK19pY3IZsG_hymdhWfJjtQ7HVtBupK_ZoDmlhTYYOX4Q2IdPQ5bg";
+    useEffect (()=>
+    {
+        setToken("Bearer"+" "+process.env.REACT_APP_KEY);
+    },[])
+
     const [title,setTitle]=useState('');
     const [overcome,setovercome]=useState('');
     const [issues,setIssues]=useState('');
@@ -58,7 +63,7 @@ const Add = () => {
           .then(res=>
             {
               sentiment=res.data.sentiment.overall;
-              fetch("/addPost",
+              fetch("http://localhost:5000/addPost",
                   {
                     headers:
                     {
